@@ -1,0 +1,7 @@
+Library/
+obj/
+Packages/
+ProjectSettings
+Assembly-CSharp.csproj
+RoflanGame.sln
+*.meta
