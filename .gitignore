@@ -1,7 +1,8 @@
 Library/
 obj/
 Packages/
-ProjectSettings
+ProjectSettings/
+Temp/
 Assembly-CSharp.csproj
 RoflanGame.sln
 *.meta
