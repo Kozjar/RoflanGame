@@ -4,13 +4,23 @@ using UnityEngine;
 
 public class Message_Class : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+}
+
+public static class MessageInventory
+{
+    public static List<Message> MessageStack = new List<Message>();
+}
+
+
+public class Message
+{
+    public GameObject Prefab;
+    public string Text_Message;
+    public Sprite Miniature;
+
+    public void AddThisMessageToInventory()
+    {
+        MessageInventory.MessageStack.Add(this);
+        //GameObject.Instantiate();
+    }
 }
