@@ -8,7 +8,12 @@ public class CursorChange : MonoBehaviour {
 	public CursorMode cursorMode = CursorMode.Auto;
 	public Vector2 hotSpot = Vector2.zero;
 
-	void OnMouseEnter()
+
+	void Start()
+	{
+		
+	}
+	public void OnMouseEnter()
 	{
 		Cursor.SetCursor(cursorTexture, hotSpot, cursorMode);
 	}
@@ -16,4 +21,8 @@ public class CursorChange : MonoBehaviour {
 	{
 		Cursor.SetCursor(null, Vector2.zero, cursorMode);
 	}
+
+	
 }
+
+
