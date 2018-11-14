@@ -9,7 +9,7 @@ public class Message_Class : MonoBehaviour {
     //Есть экземпляр класса настроек, который прикрепляется к пустому объекту на сцене.
     //В инспекторе мы указываем все необходимые настройки, которые будут применяться ко всем письмам.
     //Потом приравниваем все поля такого же, но статического класса к полям этого экземпляра.
-    //Все это делается, чтобы не пришлось для каждого письма рачками в инспекторе указывать одни и те же панель меню, префаб и т.д.
+    //Все это делается, чтобы не пришлось для каждого письма ручками в инспекторе указывать одни и те же панель меню, префаб и т.д.
 
     private void Start()
     {
@@ -35,9 +35,9 @@ public class Message_Class : MonoBehaviour {
 [System.Serializable]
 public class MessageSettingsAnother
 {
-    public GameObject Prefab;
-    public Transform _Content;
-    public GameObject FullTextArea;
+    public GameObject Prefab; //Пустая панель письма
+    public Transform _Content; //Панел, куда бед добавляться панель письма
+    public GameObject FullTextArea; //Панель полного текста письма
 }
 
 //Статический класс настроек, который используется для всех писем
