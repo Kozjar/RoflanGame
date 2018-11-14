@@ -687,7 +687,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.000036036537}
+  m_AnchoredPosition: {x: 0, y: -0.00001541807}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &393143873
@@ -1034,9 +1034,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d79a1914f6f558549b8bd3b87ccdda4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ContentField: {fileID: 393143872}
-  MessageSlotPrefab: {fileID: 1455714205503246, guid: be289e709fe50d646864c2dc5eceb90b,
-    type: 2}
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -1610,10 +1607,10 @@ RectTransform:
   m_Father: {fileID: 307042847}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -6.4000244, y: 0}
-  m_SizeDelta: {x: -572, y: -45.8}
+  m_SizeDelta: {x: 532, y: 566.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1045857578
 MonoBehaviour:
