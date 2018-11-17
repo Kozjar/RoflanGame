@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TurnOnCol : MonoBehaviour {
 	public GameObject gameobject;
@@ -10,7 +11,8 @@ public class TurnOnCol : MonoBehaviour {
 		if (second.tag == "Player")
 		{
 			gameobject.GetComponent<BoxCollider2D>().enabled = true;
-			
+			gameobject.GetComponent<Button>().enabled = true;
+
 		}
 
 
@@ -20,7 +22,7 @@ public class TurnOnCol : MonoBehaviour {
 		if (second.tag == "Player")
 		{
 			gameobject.GetComponent<BoxCollider2D>().enabled = false;
-		
+			gameobject.GetComponent<Button>().enabled = false;
 		}
 
 
