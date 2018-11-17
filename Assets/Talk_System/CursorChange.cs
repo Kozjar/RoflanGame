@@ -9,11 +9,8 @@ public class CursorChange : MonoBehaviour {
 	public Vector2 hotSpot = Vector2.zero;
 
 
-	void Start()
-	{
-		
-	}
-	public void OnMouseEnter()
+
+	 void OnMouseEnter()
 	{
 		Cursor.SetCursor(cursorTexture, hotSpot, cursorMode);
 	}
@@ -22,6 +19,10 @@ public class CursorChange : MonoBehaviour {
 		Cursor.SetCursor(null, Vector2.zero, cursorMode);
 	}
 
+	public void Test()
+	{
+		Debug.Log("Работает");
+	}
 	
 }
 
