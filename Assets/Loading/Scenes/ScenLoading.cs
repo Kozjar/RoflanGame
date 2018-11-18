@@ -16,26 +16,28 @@ public class ScenLoading : MonoBehaviour {
     public GameObject anim;
     public Text Speaker;
     // private AsyncOperation Cheker;
-    
+    private Coroutine a;
+    private string FullText;
     private void Awake()
     {
         Debug.Log("Запустилась анимка");
+        FullText = Speaker.text;
        // this.anim.Play();
     }
     void Start ()
     {
         StartCoroutine(AsynsLoad());
-        StartCoroutine(PrintMessage(Speaker.text));
+        a = StartCoroutine(PrintMessage(FullText));
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.E) & count == 0)
         {
-            Debug.Log("Запустилась 1");
+            Debug.Log("Нажата Е");
             count++;
-            StopCoroutine("PrintMessage");
-            PrintMessage_1(Speaker.text);
+            StopCoroutine(a);
+            PrintMessage_1(FullText);
         }
     }
 
@@ -57,7 +59,7 @@ public class ScenLoading : MonoBehaviour {
 
     IEnumerator PrintMessage(string message)
     {
-            Debug.Log("Запустилась 0 текст");
+            Debug.Log("Стартанула куротина вывода текста");
             Speaker.text = "";
             for (int i = 0; i < message.Length; i++)
             {
@@ -68,7 +70,7 @@ public class ScenLoading : MonoBehaviour {
 
     public void PrintMessage_1(string message)
     {
-        Debug.Log("Запустилась 1 текст");
+        Debug.Log("Вывод всего текста");
         Speaker.text = "";
         Speaker.text = message;
     }
