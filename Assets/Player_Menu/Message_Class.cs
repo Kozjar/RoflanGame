@@ -58,7 +58,6 @@ public static class MessageInventory
 [System.Serializable]
 public class Message
 {
-
     [TextArea]
     public string Text_Message; //Текст письма
     public Sprite Miniature; //миниатюра, которая будет отображаться в инвентаре

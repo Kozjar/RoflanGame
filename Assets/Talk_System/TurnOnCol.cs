@@ -10,7 +10,7 @@ public class TurnOnCol : MonoBehaviour {
 	{
 		if (second.tag == "Player")
 		{
-			gameobject.GetComponent<BoxCollider2D>().enabled = true;
+			//gameobject.GetComponent<BoxCollider2D>().enabled = true;
 			gameobject.GetComponent<Button>().enabled = true;
 
 		}
@@ -21,7 +21,7 @@ public class TurnOnCol : MonoBehaviour {
 	{
 		if (second.tag == "Player")
 		{
-			gameobject.GetComponent<BoxCollider2D>().enabled = false;
+			//gameobject.GetComponent<BoxCollider2D>().enabled = false;
 			gameobject.GetComponent<Button>().enabled = false;
 		}
 
