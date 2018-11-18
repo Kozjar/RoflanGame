@@ -46,7 +46,6 @@ public class ScenLoading : MonoBehaviour {
         while (operation.isDone == false) {
             operation.allowSceneActivation = false;
             float progress = operation.progress / 0.9f;
-            loadingImg.fillAmount = progress;
             progressText.text = string.Format("{0:0}%", progress * 100);
             if (Input.GetKeyDown(KeyCode.F) & count == 1)
             {
