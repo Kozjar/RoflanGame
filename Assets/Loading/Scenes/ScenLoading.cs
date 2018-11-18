@@ -34,7 +34,6 @@ public class ScenLoading : MonoBehaviour {
         {
             Debug.Log("Запустилась 1");
             count++;
-            anim.SetActive(false);
             StopCoroutine("PrintMessage");
             PrintMessage_1(Speaker.text);
         }
