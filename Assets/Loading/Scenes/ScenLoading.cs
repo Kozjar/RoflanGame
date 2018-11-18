@@ -48,11 +48,13 @@ public class ScenLoading : MonoBehaviour {
             operation.allowSceneActivation = false;
             float progress = operation.progress / 0.9f;
             progressText.text = string.Format("{0:0}%", progress * 100);
-            if (Input.GetKeyDown(KeyCode.F) & count == 1)
+            if (Input.GetKeyDown(KeyCode.F))
             {
                 Debug.Log("Запустилась 2");
                 operation.allowSceneActivation = true;
             }
+            if (operation.progress == 0.9f)
+                KeyDown.gameObject.SetActive(true);
             yield return null;
         }
     }
