@@ -39,4 +39,9 @@ public class Interection_Main : MonoBehaviour {
             OnClickEvent.Invoke();
         }
     }
+
+    public void DestroyThisObj()
+    {
+        Destroy(this.gameObject);
+    }
 }
