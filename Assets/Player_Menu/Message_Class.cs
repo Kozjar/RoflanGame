@@ -52,6 +52,21 @@ public static class MessageSettingsAnotherStatic
 public static class MessageInventory
 {
     public static List<Message> MessageStack = new List<Message>();
+
+    //Проверяет есть ли у нас письмо, которе начинается с *Begining*
+    public static bool FindMessage(string Begining)
+    {
+        bool find = false;
+        foreach(var message in MessageStack)
+        {
+            if (message.Text_Message.Substring(0, Begining.Length) == Begining.ToString())
+            {
+                find = true;
+                break;
+            }
+        }
+        return find;
+    }
 }
 
 

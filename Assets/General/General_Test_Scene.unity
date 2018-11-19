@@ -1504,7 +1504,7 @@ GameObject:
   - component: {fileID: 792995346}
   - component: {fileID: 792995349}
   - component: {fileID: 792995350}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -1576,7 +1576,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 792995345}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.19, y: -2.43, z: 0}
+  m_LocalPosition: {x: -2.327, y: -2.725, z: 0}
   m_LocalScale: {x: 0.176616, y: 0.176616, z: 0.176616}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1739,7 +1739,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -1.92412, y: -3.5089655}
+  m_Offset: {x: -0.82079124, y: -3.016488}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -1750,8 +1750,8 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 38.64961, y: 25.675974}
-  m_EdgeRadius: 0
+  m_Size: {x: 21.25074, y: 10.508253}
+  m_EdgeRadius: 0.6
 --- !u!114 &904692975
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2024,7 +2024,7 @@ GameObject:
   - component: {fileID: 1076857510}
   - component: {fileID: 1076857509}
   - component: {fileID: 1076857513}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Letter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2060,6 +2060,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+    m_CallsDirty: 1
   cursorTexture: {fileID: 2800000, guid: 6f563d58660b96e45809f7cf125fc5fc, type: 3}
   cursorMode: 0
   hotSpot: {x: 0, y: 0}
@@ -2141,7 +2142,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1076857508}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.026, y: -0.908, z: 0}
+  m_LocalPosition: {x: 1.026, y: -0.908, z: 0.5}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children:
   - {fileID: 904692973}
@@ -2206,7 +2207,7 @@ GameObject:
   - component: {fileID: 1121662471}
   - component: {fileID: 1121662470}
   - component: {fileID: 1121662469}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Table
   m_TagString: Respawn
   m_Icon: {fileID: 0}
@@ -2850,7 +2851,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1435742861}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.31, y: 1.57, z: 0}
+  m_LocalPosition: {x: -3.31, y: 1.57, z: 1}
   m_LocalScale: {x: 0.904, y: 0.904, z: 0.904}
   m_Children: []
   m_Father: {fileID: 0}
