@@ -4,27 +4,27 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class ScenLoading : MonoBehaviour {
+public class ScenLoading : MonoBehaviour
+{
 
-    public int count=0;
+    public int count = 0;
 
     [Header("Загруженная сцена")]
     public int sceneID;
     [Header("Остальные объекты")]
-    public Image loadingImg;
-    public Text progressText, KeyDown;
-    public GameObject anim;
+    public Text progressText, KeyDown_F, KeyDown_E;
     public Text Speaker;
-    // private AsyncOperation Cheker;
-    private Coroutine a;
+    
+    private Coroutine a;//...объект обращение к карутину
+
     private string FullText;
     private void Awake()
     {
         Debug.Log("Запустилась анимка");
         FullText = Speaker.text;
-       // this.anim.Play();
+        // this.anim.Play();
     }
-    void Start ()
+    void Start()
     {
         StartCoroutine(AsynsLoad());
         a = StartCoroutine(PrintMessage(FullText));
@@ -32,9 +32,11 @@ public class ScenLoading : MonoBehaviour {
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) & count == 0)
+        if (Input.GetKeyDown(KeyCode.E))
         {
             Debug.Log("Нажата Е");
+            KeyDown_E.gameObject.SetActive(false);
+            KeyDown_F.gameObject.SetActive(true);
             count++;
             StopCoroutine(a);
             PrintMessage_1(FullText);
@@ -44,7 +46,8 @@ public class ScenLoading : MonoBehaviour {
     IEnumerator AsynsLoad()
     {
         AsyncOperation operation = SceneManager.LoadSceneAsync(sceneID);
-        while (operation.isDone == false) {
+        while (operation.isDone == false)
+        {
             operation.allowSceneActivation = false;
             float progress = operation.progress / 0.9f;
             progressText.text = string.Format("{0:0}%", progress * 100);
@@ -53,21 +56,24 @@ public class ScenLoading : MonoBehaviour {
                 Debug.Log("Запустилась 2");
                 operation.allowSceneActivation = true;
             }
-            if (operation.progress == 0.9f)
-                KeyDown.gameObject.SetActive(true);
             yield return null;
         }
     }
 
     IEnumerator PrintMessage(string message)
     {
-            Debug.Log("Стартанула куротина вывода текста");
-            Speaker.text = "";
-            for (int i = 0; i < message.Length; i++)
+        Debug.Log("Стартанула куротина вывода текста");
+        Speaker.text = "";
+        for (int i = 0; i < message.Length; i++)
+        {
+            Speaker.text += message[i];
+            if (Speaker.text.Length == message.Length)
             {
-                Speaker.text += message[i];
-                yield return new WaitForSeconds(.0001f);
+                KeyDown_F.gameObject.SetActive(true);
+                KeyDown_E.gameObject.SetActive(false);
             }
+            yield return new WaitForSeconds(.0001f);
+        }
     }
 
     public void PrintMessage_1(string message)
