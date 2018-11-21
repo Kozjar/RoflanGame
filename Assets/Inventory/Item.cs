@@ -7,31 +7,32 @@ using UnityEngine.UI;
 public class Item
 {
 	// Имя нашего предмета.
-	public string name;
+	public string name = null;
 	// Количество предметов(для стакающих).
 	public int count;
 	public bool IsStackable = false;
 	// Описание предмета(в коде пока не реализованно).
 	[Multiline(5)]
 	public string Description;
-	// Панель с кнопками(слотами).
-	public Transform InventoryPanel;
-	
+    // Панель с кнопками(слотами).
+    //public Transform InventoryPanel;
+    public Transform PrefabItem;
 
-	// Функция проверяющая на тип предмета.
-	public void AddItem(Transform PrefabItem)
+
+    // Функция проверяющая на тип предмета.
+    public void AddItem()
 	{
 		if (IsStackable == true)
 		{
-			AddStackableItem(PrefabItem);
+			AddStackableItem();
 		}
 		else
 		{
-			AddNotStackableItem(PrefabItem);
+			AddNotStackableItem();
 		}
 	}
 	// Функция добавляющаа стакающий предмет в инвентарь.
-	public void AddStackableItem(Transform PrefabItem)
+	public void AddStackableItem()
 	{
 		bool FoundItem = false;
 		for(int i=0;i<Inventory.currentSlot;i++)
@@ -40,7 +41,7 @@ public class Item
 				if (Inventory._inventory[i].name == name)
 				{
 					Inventory._inventory[i].count++;
-					InventoryPanel.GetChild(i).GetChild(0).GetChild(0).GetComponent<Text>().text = Inventory._inventory[i].count.ToString();
+					Inventory.InventoryPanel.GetChild(i).GetChild(0).GetChild(0).GetComponent<Text>().text = Inventory._inventory[i].count.ToString();
 					FoundItem = true;
 					break;
 
@@ -52,41 +53,41 @@ public class Item
 		}
 		if(!FoundItem)
 		{
-			Object.Instantiate(PrefabItem, InventoryPanel.GetChild(Inventory.currentSlot));
+			Object.Instantiate(PrefabItem, Inventory.InventoryPanel.GetChild(Inventory.currentSlot));
 			Inventory._inventory[Inventory.currentSlot] = this;
 
 			count++;
-			InventoryPanel.GetChild(Inventory.currentSlot).GetChild(0).GetChild(0).GetComponent<Text>().text = count.ToString();
+            Inventory.InventoryPanel.GetChild(Inventory.currentSlot).GetChild(0).GetChild(0).GetComponent<Text>().text = count.ToString();
 			Inventory.currentSlot++;
 		}
 	}
 	// Функция добавляющая нестакающий предмет в инвентарь.
-	private void AddNotStackableItem(Transform PrefabItem)
+	private void AddNotStackableItem()
 	{
 		// Проверка на пустоту слота(ячейки).
-		bool EmprtySlot=false;
-		for (int i = 0; i < Inventory.currentSlot; i++)
+		//bool EmprtySlot=false;
+		for (int i = 0; i <= 14; i++)
 		{
 			// Если i-ый элемент не существует то...
-			if (Inventory._inventory[i].name == null)
+			if (Inventory._inventory[i] == null)
 			{
 				// Добавляем предмет в пустой слот.
-				Object.Instantiate(PrefabItem, InventoryPanel.GetChild(i));
+				Object.Instantiate(PrefabItem, Inventory.InventoryPanel.GetChild(i));
 				// Записываем этот предмет в массив класса.
 				Inventory._inventory[i] = this;
-				EmprtySlot = true;
+				//EmprtySlot = true;
 				// Ломаем нахуй код.
 				break;
 
 			}
 		}
 		// Код ниже думаю понятен.
-		if (EmprtySlot==false)
-		{
-			Object.Instantiate(PrefabItem, InventoryPanel.GetChild(Inventory.currentSlot));
-			Inventory._inventory[Inventory.currentSlot] = this;
-			Inventory.currentSlot++;
-		}
+		//if (EmprtySlot==false)
+		//{
+		//	Object.Instantiate(PrefabItem, InventoryPanel.GetChild(Inventory.currentSlot));
+		//	Inventory._inventory[Inventory.currentSlot] = this;
+		//	Inventory.currentSlot++;
+		//}
 	}
 	//public bool FindItem(string Name)
 	//{
@@ -101,13 +102,7 @@ public class Item
 	//}
 }
 
-public static class Inventory
-{
-	public static Item[] _inventory = new Item[14];
-	public static int currentSlot=0;
-	
 
-}
 
 
 
