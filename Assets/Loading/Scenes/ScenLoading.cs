@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class ScenLoading : MonoBehaviour
 {
-
+    //...переменная для понимания того что кнопка Е была нажата
     public int count = 0;
 
     [Header("Загруженная сцена")]
@@ -14,15 +14,15 @@ public class ScenLoading : MonoBehaviour
     [Header("Остальные объекты")]
     public Text progressText, KeyDown_F, KeyDown_E;
     public Text Speaker;
-    
-    private Coroutine a;//...объект обращение к карутину
 
+    //...объект обращение к карутину
+    private Coroutine a;
+    //...переменная к которой присвоим наш текст,чтобы кидать его в корутину
     private string FullText;
     private void Awake()
     {
         Debug.Log("Запустилась анимка");
         FullText = Speaker.text;
-        // this.anim.Play();
     }
     void Start()
     {
@@ -32,7 +32,7 @@ public class ScenLoading : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E) && count == 0)
         {
             Debug.Log("Нажата Е");
             KeyDown_E.gameObject.SetActive(false);
@@ -51,7 +51,7 @@ public class ScenLoading : MonoBehaviour
             operation.allowSceneActivation = false;
             float progress = operation.progress / 0.9f;
             progressText.text = string.Format("{0:0}%", progress * 100);
-            if (Input.GetKeyDown(KeyCode.F))
+            if (Input.GetKeyDown(KeyCode.F) && count == 1)
             {
                 Debug.Log("Запустилась 2");
                 operation.allowSceneActivation = true;
@@ -71,6 +71,7 @@ public class ScenLoading : MonoBehaviour
             {
                 KeyDown_F.gameObject.SetActive(true);
                 KeyDown_E.gameObject.SetActive(false);
+                count++;
             }
             yield return new WaitForSeconds(.0001f);
         }
