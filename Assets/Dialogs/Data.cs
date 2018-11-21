@@ -13,10 +13,8 @@ public class Data : MonoBehaviour {
 }
 
 
-[System.Serializable]
 public static class GameStats
 {
-    [System.Serializable]
     public static class Dialogs
     {
         public static bool FackedRedSword;

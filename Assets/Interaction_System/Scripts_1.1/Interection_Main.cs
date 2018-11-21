@@ -11,8 +11,10 @@ public class Interection_Main : MonoBehaviour {
     //Событие, которое будет выполняться при нажатии
     public UnityEvent OnClickEvent;
     //Настройки курсора
-    public Texture2D cursorTexture; 
+    public Texture2D cursorTexture;
+    [HideInInspector]
     public CursorMode cursorMode = CursorMode.Auto;
+    [HideInInspector]
     public Vector2 hotSpot = Vector2.zero;
 
 
