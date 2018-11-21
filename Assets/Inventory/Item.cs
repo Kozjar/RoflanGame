@@ -6,16 +6,19 @@ using UnityEngine.UI;
 [System.Serializable]
 public class Item
 {
+	// Имя нашего предмета.
 	public string name;
+	// Количество предметов(для стакающих).
 	public int count;
 	public bool IsStackable = false;
+	// Описание предмета(в коде пока не реализованно).
 	[Multiline(5)]
 	public string Description;
-
+	// Панель с кнопками(слотами).
 	public Transform InventoryPanel;
 	
 
-
+	// Функция проверяющая на тип предмета.
 	public void AddItem(Transform PrefabItem)
 	{
 		if (IsStackable == true)
@@ -27,7 +30,7 @@ public class Item
 			AddNotStackableItem(PrefabItem);
 		}
 	}
-
+	// Функция добавляющаа стакающий предмет в инвентарь.
 	public void AddStackableItem(Transform PrefabItem)
 	{
 		bool FoundItem = false;
@@ -57,24 +60,47 @@ public class Item
 			Inventory.currentSlot++;
 		}
 	}
-
+	// Функция добавляющая нестакающий предмет в инвентарь.
 	private void AddNotStackableItem(Transform PrefabItem)
 	{
-		
-			for (int i = 0; i < Inventory.currentSlot; i++)
+		// Проверка на пустоту слота(ячейки).
+		bool EmprtySlot=false;
+		for (int i = 0; i < Inventory.currentSlot; i++)
+		{
+			// Если i-ый элемент не существует то...
+			if (Inventory._inventory[i].name == null)
 			{
-				if(Inventory._inventory[i].name==null)
-				{
-				Inventory.currentSlot = i;
-				}
-			}
-	
-		Object.Instantiate(PrefabItem, InventoryPanel.GetChild(Inventory.currentSlot));
-		Inventory._inventory[Inventory.currentSlot] = this;
-		Inventory.currentSlot++;
-	}
+				// Добавляем предмет в пустой слот.
+				Object.Instantiate(PrefabItem, InventoryPanel.GetChild(i));
+				// Записываем этот предмет в массив класса.
+				Inventory._inventory[i] = this;
+				EmprtySlot = true;
+				// Ломаем нахуй код.
+				break;
 
+			}
+		}
+		// Код ниже думаю понятен.
+		if (EmprtySlot==false)
+		{
+			Object.Instantiate(PrefabItem, InventoryPanel.GetChild(Inventory.currentSlot));
+			Inventory._inventory[Inventory.currentSlot] = this;
+			Inventory.currentSlot++;
+		}
+	}
+	//public bool FindItem(string Name)
+	//{
+	//	foreach(var index in Inventory._inventory)
+	//	{
+	//		if (index.name == Name)
+	//			return true;
+	//		else
+	//			return false;
+	//	}
+	//	return;
+	//}
 }
+
 public static class Inventory
 {
 	public static Item[] _inventory = new Item[14];

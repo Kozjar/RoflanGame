@@ -234,6 +234,16 @@ Prefab:
       propertyPath: m_Name
       value: Button (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 114286071361012122, guid: c89e0414f7095154e8a45bf4d1d7cc01,
+        type: 2}
+      propertyPath: count
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114286071361012122, guid: c89e0414f7095154e8a45bf4d1d7cc01,
+        type: 2}
+      propertyPath: button
+      value: 
+      objectReference: {fileID: 1855111463}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c89e0414f7095154e8a45bf4d1d7cc01, type: 2}
   m_IsPrefabAsset: 0
@@ -482,6 +492,16 @@ Prefab:
       propertyPath: m_Name
       value: Button (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 114286071361012122, guid: c89e0414f7095154e8a45bf4d1d7cc01,
+        type: 2}
+      propertyPath: count
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 114286071361012122, guid: c89e0414f7095154e8a45bf4d1d7cc01,
+        type: 2}
+      propertyPath: button
+      value: 
+      objectReference: {fileID: 182425433}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c89e0414f7095154e8a45bf4d1d7cc01, type: 2}
   m_IsPrefabAsset: 0
@@ -601,6 +621,16 @@ Prefab:
       propertyPath: m_Name
       value: Button (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 114286071361012122, guid: c89e0414f7095154e8a45bf4d1d7cc01,
+        type: 2}
+      propertyPath: count
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 114286071361012122, guid: c89e0414f7095154e8a45bf4d1d7cc01,
+        type: 2}
+      propertyPath: button
+      value: 
+      objectReference: {fileID: 1336018955}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c89e0414f7095154e8a45bf4d1d7cc01, type: 2}
   m_IsPrefabAsset: 0
@@ -902,6 +932,16 @@ Prefab:
       propertyPath: m_Name
       value: Button (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 114286071361012122, guid: c89e0414f7095154e8a45bf4d1d7cc01,
+        type: 2}
+      propertyPath: count
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114286071361012122, guid: c89e0414f7095154e8a45bf4d1d7cc01,
+        type: 2}
+      propertyPath: button
+      value: 
+      objectReference: {fileID: 1647283768}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c89e0414f7095154e8a45bf4d1d7cc01, type: 2}
   m_IsPrefabAsset: 0
@@ -1242,10 +1282,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ThisItem:
-    name: yuri
+    name: 
     count: 0
     IsStackable: 0
-    Description: Ne top waifu
+    Description: 
     InventoryPanel: {fileID: 1346443994}
   item: {fileID: 224179346096545490, guid: add5a7deb418f684f95c9a58d3f3e008, type: 2}
 --- !u!114 &1208999362
@@ -1524,6 +1564,16 @@ Prefab:
       propertyPath: m_Name
       value: Button (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 114286071361012122, guid: c89e0414f7095154e8a45bf4d1d7cc01,
+        type: 2}
+      propertyPath: count
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 114286071361012122, guid: c89e0414f7095154e8a45bf4d1d7cc01,
+        type: 2}
+      propertyPath: button
+      value: 
+      objectReference: {fileID: 1837503859}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c89e0414f7095154e8a45bf4d1d7cc01, type: 2}
   m_IsPrefabAsset: 0
@@ -1743,6 +1793,11 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 114286071361012122, guid: c89e0414f7095154e8a45bf4d1d7cc01,
+        type: 2}
+      propertyPath: button
+      value: 
+      objectReference: {fileID: 1120775198}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c89e0414f7095154e8a45bf4d1d7cc01, type: 2}
   m_IsPrefabAsset: 0
@@ -1991,6 +2046,16 @@ Prefab:
       propertyPath: m_Name
       value: Button (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 114286071361012122, guid: c89e0414f7095154e8a45bf4d1d7cc01,
+        type: 2}
+      propertyPath: count
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114286071361012122, guid: c89e0414f7095154e8a45bf4d1d7cc01,
+        type: 2}
+      propertyPath: button
+      value: 
+      objectReference: {fileID: 449636282}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c89e0414f7095154e8a45bf4d1d7cc01, type: 2}
   m_IsPrefabAsset: 0
@@ -2249,6 +2314,16 @@ Prefab:
       propertyPath: m_Name
       value: Button (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 114286071361012122, guid: c89e0414f7095154e8a45bf4d1d7cc01,
+        type: 2}
+      propertyPath: count
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114286071361012122, guid: c89e0414f7095154e8a45bf4d1d7cc01,
+        type: 2}
+      propertyPath: button
+      value: 
+      objectReference: {fileID: 870478852}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c89e0414f7095154e8a45bf4d1d7cc01, type: 2}
   m_IsPrefabAsset: 0
@@ -2472,6 +2547,16 @@ Prefab:
       propertyPath: m_Name
       value: Button (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 114286071361012122, guid: c89e0414f7095154e8a45bf4d1d7cc01,
+        type: 2}
+      propertyPath: count
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114286071361012122, guid: c89e0414f7095154e8a45bf4d1d7cc01,
+        type: 2}
+      propertyPath: button
+      value: 
+      objectReference: {fileID: 1826609198}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c89e0414f7095154e8a45bf4d1d7cc01, type: 2}
   m_IsPrefabAsset: 0
