@@ -5,12 +5,8 @@ using UnityEngine;
 public class MenuOpener : MonoBehaviour {
     public GameObject Menu;
     private bool MenuActivity = false;
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
+
+    //Открывает меню игрока при нажатии на E
 	void Update () {
         if (Input.GetKeyDown(KeyCode.E))
         {
