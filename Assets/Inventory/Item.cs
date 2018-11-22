@@ -35,27 +35,54 @@ public class Item
 	// Функция добавляющаа стакающий предмет в инвентарь.
 	public void AddStackableItem()
 	{
-		bool FoundItem = false;
-		for(int i=0;i<Inventory.currentSlot;i++)
-		{
-			
-				if (Inventory._inventory[i].name == name)
-				{
-					Inventory._inventory[i].count++;
-					Inventory.InventoryPanel.GetChild(i).GetChild(0).GetChild(0).GetComponent<Text>().text = Inventory._inventory[i].count.ToString();
-					FoundItem = true;
-					break;
-				}
-		}
-		if(!FoundItem)
-		{
-			Object.Instantiate(PrefabItem, Inventory.InventoryPanel.GetChild(Inventory.currentSlot));
-			Inventory._inventory[Inventory.currentSlot] = this;
+        int index = 0;
+        if(Inventory.FindItemWithName(name, ref index))
+        {
+            Inventory._inventory[index].count += count;
+            Inventory.InventoryPanel.GetChild(index).GetChild(0).GetChild(0).GetComponent<Text>().text = Inventory._inventory[index].count.ToString();
+        }
+        else
+        {
+            for (int i = 0; i <= 14; i++)
+            {
+                // Если i-ый элемент не существует то...
+                if (Inventory._inventory[i] == null)
+                {
+                    // Добавляем предмет в пустой слот.
+                    Transform panel = Object.Instantiate(PrefabItem, Inventory.InventoryPanel.GetChild(i));
+                    // Записываем этот предмет в массив класса.
+                    Inventory._inventory[i] = this;
+                    panel.GetChild(0).GetComponent<Text>().text = this.count.ToString();
+                    //EmprtySlot = true;
+                    // Ломаем нахуй код.
+                    break;
 
-			count++;
-            Inventory.InventoryPanel.GetChild(Inventory.currentSlot).GetChild(0).GetChild(0).GetComponent<Text>().text = count.ToString();
-			Inventory.currentSlot++;
-		}
+                }
+            }
+        }
+        //////////////// СТАРЫЙ КОД ///////////////
+        ///
+		//bool FoundItem = false;
+		//for(int i=0;i<Inventory.currentSlot;i++)
+		//{
+			
+		//		if (Inventory._inventory[i].name == name)
+		//		{
+		//			Inventory._inventory[i].count++;
+		//			Inventory.InventoryPanel.GetChild(i).GetChild(0).GetChild(0).GetComponent<Text>().text = Inventory._inventory[i].count.ToString();
+		//			FoundItem = true;
+		//			break;
+		//		}
+		//}
+		//if(!FoundItem)
+		//{
+		//	Object.Instantiate(PrefabItem, Inventory.InventoryPanel.GetChild(Inventory.currentSlot));
+		//	Inventory._inventory[Inventory.currentSlot] = this;
+
+		//	count++;
+  //          Inventory.InventoryPanel.GetChild(Inventory.currentSlot).GetChild(0).GetChild(0).GetComponent<Text>().text = count.ToString();
+		//	Inventory.currentSlot++;
+		//}
 	}
 	// Функция добавляющая нестакающий предмет в инвентарь.
 	private void AddNotStackableItem()
@@ -71,30 +98,21 @@ public class Item
 				Object.Instantiate(PrefabItem, Inventory.InventoryPanel.GetChild(i));
 				// Записываем этот предмет в массив класса.
 				Inventory._inventory[i] = this;
-				//EmprtySlot = true;
 				// Ломаем нахуй код.
 				break;
 
 			}
 		}
-		// Код ниже думаю понятен.
-		//if (EmprtySlot==false)
-		//{
-		//	Object.Instantiate(PrefabItem, InventoryPanel.GetChild(Inventory.currentSlot));
-		//	Inventory._inventory[Inventory.currentSlot] = this;
-		//	Inventory.currentSlot++;
-		//}
 	}
 
 
     private void CreateNotificatioin()
     {
         var Panel = GameObject.Instantiate(Inventory.NotificationItemPenel_Prefab, Inventory.NoficationsContent); //Создаем пустую панель уведомления о добавленном предмете
-        Panel.GetChild(0).GetComponent<Text>().text = this.name; //"Предмет получен: *добавляем сюда имя этого предмета*"
+        Panel.GetChild(1).GetComponent<Text>().text = this.name; //"Предмет получен: *добавляем сюда имя этого предмета*"
         if (this.IsStackable) //Если добавляется стакающийся предмет, то в скобках указываем его кол-во
-            Panel.GetChild(0).GetComponent<Text>().text += " (" + count.ToString() + ")";
-        GameObject.Destroy(Panel, 3); //Уничтожаем эту панель через 3 секунды. Можно было еще через коротину сделать красивое затемнение, но потом уже
-
+            Panel.GetChild(1).GetComponent<Text>().text += " (" + count.ToString() + ")";
+        GameObject.Destroy(Panel.gameObject, 3); //Уничтожаем эту панель через 3 секунды. Можно было еще через коротину сделать красивое затемнение, но потом уже
     }
 
     IEnumerator CreateNotificationCorourine(Transform Panel)
