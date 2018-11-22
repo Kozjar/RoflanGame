@@ -1334,6 +1334,7 @@ MonoBehaviour:
   cursorTexture: {fileID: 2800000, guid: 6f563d58660b96e45809f7cf125fc5fc, type: 3}
   cursorMode: 0
   hotSpot: {x: 0, y: 0}
+  DeleteClickEvent: 0
 --- !u!61 &230254222
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1430,13 +1431,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41b61bcc13d0cdd4b9188d5b65143303, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ThisItem:
-    name: Yuri
-    count: 0
-    IsStackable: 0
-    Description: 
-    PrefabItem: {fileID: 224179346096545490, guid: add5a7deb418f684f95c9a58d3f3e008,
-      type: 2}
+  ThisItem: []
 --- !u!1 &233674217
 GameObject:
   m_ObjectHideFlags: 0
@@ -1488,6 +1483,7 @@ MonoBehaviour:
   cursorTexture: {fileID: 2800000, guid: 174b5c505590f534f966560007a96cc2, type: 3}
   cursorMode: 0
   hotSpot: {x: 15, y: 15}
+  DeleteClickEvent: 0
 --- !u!61 &233674219
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1566,7 +1562,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 233674217}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.4, y: -1, z: 0}
+  m_LocalPosition: {x: -4.4, y: -1, z: 0.5}
   m_LocalScale: {x: 0.491452, y: 0.491452, z: 0.491452}
   m_Children:
   - {fileID: 1546841941}
@@ -1585,7 +1581,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ThisItem:
-    name: Money
+  - name: "\u0414\u0435\u043D\u044C\u0433\u0438"
     count: 105
     IsStackable: 1
     Description: 
@@ -2622,6 +2618,7 @@ MonoBehaviour:
   cursorTexture: {fileID: 2800000, guid: 174b5c505590f534f966560007a96cc2, type: 3}
   cursorMode: 0
   hotSpot: {x: 0, y: 0}
+  DeleteClickEvent: 0
 --- !u!61 &660826899
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2946,8 +2943,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 734179451}
-  - component: {fileID: 734179453}
   - component: {fileID: 734179452}
+  - component: {fileID: 734179453}
   m_Layer: 10
   m_Name: GameObject
   m_TagString: Untagged
@@ -2962,7 +2959,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 734179450}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1952488406}
@@ -2982,8 +2979,8 @@ MonoBehaviour:
   cursorTexture: {fileID: 2800000, guid: bbb5df9fd8e52ac44b8694562d3c71cf, type: 3}
   cursorMode: 0
   hotSpot: {x: 0, y: 0}
---- !u!58 &734179453
-CircleCollider2D:
+--- !u!61 &734179453
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
@@ -2994,9 +2991,19 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.07805603, y: -0.18190011}
+  m_Offset: {x: -0.06959152, y: 0.06505841}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Radius: 1.3743834
+  m_Size: {x: 0.8608031, y: 0.8699237}
+  m_EdgeRadius: 1
 --- !u!1 &770971940
 GameObject:
   m_ObjectHideFlags: 0
@@ -3306,7 +3313,7 @@ GameObject:
   - component: {fileID: 904692973}
   - component: {fileID: 904692974}
   - component: {fileID: 904692975}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3320,7 +3327,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 904692972}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1076857512}
@@ -3946,6 +3953,7 @@ MonoBehaviour:
   cursorTexture: {fileID: 2800000, guid: bbb5df9fd8e52ac44b8694562d3c71cf, type: 3}
   cursorMode: 0
   hotSpot: {x: 5, y: 5}
+  DeleteClickEvent: 0
 --- !u!61 &1076857510
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4505,7 +4513,7 @@ GameObject:
   - component: {fileID: 1269020058}
   - component: {fileID: 1269020060}
   - component: {fileID: 1269020059}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4519,7 +4527,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1269020057}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2095624196}
@@ -5686,7 +5694,7 @@ GameObject:
   - component: {fileID: 1546841941}
   - component: {fileID: 1546841943}
   - component: {fileID: 1546841942}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5700,7 +5708,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1546841940}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 233674221}
@@ -6784,6 +6792,7 @@ MonoBehaviour:
   cursorTexture: {fileID: 2800000, guid: bbb5df9fd8e52ac44b8694562d3c71cf, type: 3}
   cursorMode: 0
   hotSpot: {x: 5, y: 5}
+  DeleteClickEvent: 1
 --- !u!61 &1952488404
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6862,7 +6871,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1952488402}
   m_LocalRotation: {x: -0, y: -0, z: 0.0007502823, w: 0.99999976}
-  m_LocalPosition: {x: -1.2805, y: 1.5922, z: 0}
+  m_LocalPosition: {x: -1.281, y: 1.617, z: 0.5}
   m_LocalScale: {x: 0.7452986, y: 0.7452986, z: 0.7452986}
   m_Children:
   - {fileID: 734179451}
@@ -6881,11 +6890,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ThisItem:
-    name: "\u041A\u0440\u0438\u0441\u0442\u0430\u043B\u043B"
+  - name: "\u041A\u0440\u0438\u0441\u0442\u0430\u043B\u043B"
     count: 0
     IsStackable: 0
     Description: 
     PrefabItem: {fileID: 224964339537050680, guid: 13973088d46ab084789cbda6e05d1c7a,
+      type: 2}
+  - name: "\u041A\u043E\u0440\u0435\u043D\u044C \u0445\u0443\u0439\u043D\u0438"
+    count: 0
+    IsStackable: 0
+    Description: 
+    PrefabItem: {fileID: 224537386822946186, guid: b8ef54d025cce6c4697b92eb7bb78d23,
       type: 2}
 --- !u!1001 &1958177356
 Prefab:
@@ -7268,7 +7283,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 0.46226418, g: 0.46226418, b: 0.46226418, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -7365,6 +7380,7 @@ MonoBehaviour:
   cursorTexture: {fileID: 2800000, guid: 174b5c505590f534f966560007a96cc2, type: 3}
   cursorMode: 0
   hotSpot: {x: 15, y: 15}
+  DeleteClickEvent: 0
 --- !u!61 &2095624194
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7443,7 +7459,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2095624192}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.85, y: 2.17, z: 0}
+  m_LocalPosition: {x: 3.85, y: 1.986, z: 0.5}
   m_LocalScale: {x: 0.21439019, y: 0.21439019, z: 0.21439019}
   m_Children:
   - {fileID: 1269020058}
@@ -7552,7 +7568,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ThisItem:
-    name: Money
+  - name: "\u041A\u0440\u0438\u0441\u0442\u0430\u043B\u043B"
     count: 0
     IsStackable: 0
     Description: 
