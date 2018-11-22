@@ -17,6 +17,18 @@ public class StaticInventory : MonoBehaviour {
         else
             Debug.Log("Предмета с таким именем нет");
     }
+    public static void DeleteSomeValueOfStackableItem(string name, int num)
+    {
+        int i = 0;
+        if (Inventory.FindItemWithName(name, ref i))
+        {
+            if (Inventory._inventory[i].count >= num)
+            {
+                Inventory._inventory[i].count -= num;
+                Inventory.InventoryPanel.GetChild(i).GetComponent<Text>().text = Inventory._inventory[i].count.ToString();
+            }
+        }
+    }
 }
 
 public static class Inventory
