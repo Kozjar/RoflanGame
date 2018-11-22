@@ -34,7 +34,7 @@ public static class Inventory
         {
             try
             {
-                if (Inventory._inventory[i].name == name)
+                if (Inventory._inventory[i].name.ToString() == name.ToString())
                 {
                     return true; //Возвращаем true, если предмет найдет
                 }
@@ -51,7 +51,7 @@ public static class Inventory
         {
             try
             {
-                if (Inventory._inventory[i].name == name)
+                if (Inventory._inventory[i].name.ToString() == name.ToString())
                 {
                     index = i;
                     return true;

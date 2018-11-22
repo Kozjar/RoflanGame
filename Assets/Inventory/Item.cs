@@ -7,10 +7,10 @@ using UnityEngine.UI;
 public class Item
 {
 	// Имя нашего предмета.
-	public string name = null;
+	public string name;
 	// Количество предметов(для стакающих).
 	public int count;
-	public bool IsStackable = false;
+	public bool IsStackable;
 	// Описание предмета(в коде пока не реализованно).
 	[Multiline(5)]
 	public string Description;
@@ -18,6 +18,22 @@ public class Item
     //public Transform InventoryPanel;
     public Transform PrefabItem;
 
+    public Item(Item NewItem)
+    {
+        name = NewItem.name.ToString();
+        count = NewItem.count;
+        IsStackable = NewItem.IsStackable;
+        Description = NewItem.Description.ToString();
+        PrefabItem = NewItem.PrefabItem;
+    }
+    public Item()
+    {
+        name = "";
+        count = 0;
+        IsStackable = false;
+        Description = "";
+        PrefabItem = null;
+    }
 
     // Функция проверяющая на тип предмета.
     public void AddItem()
@@ -38,7 +54,7 @@ public class Item
         int index = 0;
         if(Inventory.FindItemWithName(name, ref index))
         {
-            Inventory._inventory[index].count += count;
+            Inventory._inventory[index].count = Inventory._inventory[index].count + count;
             Inventory.InventoryPanel.GetChild(index).GetChild(0).GetChild(0).GetComponent<Text>().text = Inventory._inventory[index].count.ToString();
         }
         else
@@ -51,16 +67,15 @@ public class Item
                     // Добавляем предмет в пустой слот.
                     Transform panel = Object.Instantiate(PrefabItem, Inventory.InventoryPanel.GetChild(i));
                     // Записываем этот предмет в массив класса.
-                    Inventory._inventory[i] = this;
-                    panel.GetChild(0).GetComponent<Text>().text = this.count.ToString();
+                    Inventory._inventory[i] = new Item(this);
+                    panel.GetChild(0).GetComponent<Text>().text = count.ToString();
                     //EmprtySlot = true;
                     // Ломаем нахуй код.
                     break;
-
                 }
             }
         }
-        //////////////// СТАРЫЙ КОД ///////////////
+        //////////////// СТАРЫЙ КОД /////////////// 
         ///
 		//bool FoundItem = false;
 		//for(int i=0;i<Inventory.currentSlot;i++)
@@ -97,7 +112,7 @@ public class Item
 				// Добавляем предмет в пустой слот.
 				Object.Instantiate(PrefabItem, Inventory.InventoryPanel.GetChild(i));
 				// Записываем этот предмет в массив класса.
-				Inventory._inventory[i] = this;
+				Inventory._inventory[i] = new Item(this);
 				// Ломаем нахуй код.
 				break;
 
@@ -109,8 +124,8 @@ public class Item
     private void CreateNotificatioin()
     {
         var Panel = GameObject.Instantiate(Inventory.NotificationItemPenel_Prefab, Inventory.NoficationsContent); //Создаем пустую панель уведомления о добавленном предмете
-        Panel.GetChild(1).GetComponent<Text>().text = this.name; //"Предмет получен: *добавляем сюда имя этого предмета*"
-        if (this.IsStackable) //Если добавляется стакающийся предмет, то в скобках указываем его кол-во
+        Panel.GetChild(1).GetComponent<Text>().text = name; //"Предмет получен: *добавляем сюда имя этого предмета*"
+        if (IsStackable) //Если добавляется стакающийся предмет, то в скобках указываем его кол-во
             Panel.GetChild(1).GetComponent<Text>().text += " (" + count.ToString() + ")";
         GameObject.Destroy(Panel.gameObject, 3); //Уничтожаем эту панель через 3 секунды. Можно было еще через коротину сделать красивое затемнение, но потом уже
     }

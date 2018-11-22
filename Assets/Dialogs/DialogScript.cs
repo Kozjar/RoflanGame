@@ -42,7 +42,7 @@ public class NPCDialog
             
 
             public bool CloseDialog;
-            public bool ShoudBeShowen;
+            public bool ShoudBeShowen = true;
             public string replyText;
             public int ToNod;
         }
