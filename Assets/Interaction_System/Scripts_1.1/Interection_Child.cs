@@ -12,7 +12,8 @@ public class Interection_Child : MonoBehaviour {
 
     private void Start()
     { //Просто заносим в переменную спрайта курсора ту же текстуру, что и в скрипте основного объекта
-        cursorTexture = gameObject.GetComponentInParent<Interection_Main>().cursorTexture; 
+        cursorTexture = gameObject.GetComponentInParent<Interection_Main>().cursorTexture;
+        hotSpot = gameObject.GetComponentInParent<Interection_Main>().hotSpot;
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {

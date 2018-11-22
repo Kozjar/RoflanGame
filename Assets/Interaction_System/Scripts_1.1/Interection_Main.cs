@@ -14,8 +14,8 @@ public class Interection_Main : MonoBehaviour {
     public Texture2D cursorTexture;
     [HideInInspector]
     public CursorMode cursorMode = CursorMode.Auto;
-    [HideInInspector]
     public Vector2 hotSpot = Vector2.zero;
+    public bool DeleteClickEvent;
 
 
     void OnMouseEnter()
@@ -39,6 +39,8 @@ public class Interection_Main : MonoBehaviour {
         {
             Cursor.SetCursor(null, Vector2.zero, cursorMode);
             OnClickEvent.Invoke();
+            if (DeleteClickEvent)
+                transform.GetChild(0).GetComponent<BoxCollider2D>().enabled = false;
         }
     }
 

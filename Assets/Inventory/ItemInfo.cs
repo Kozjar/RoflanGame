@@ -5,11 +5,12 @@ using UnityEngine.UI;
 
 public class ItemInfo : MonoBehaviour
 {
-    public Item ThisItem;
+    public Item[] ThisItem;
 
     //Функция добавления этого предмета в инвентарь
     public void AddThisItem()
     {
-        ThisItem.AddItem();
+        foreach (var Thing in ThisItem)
+            Thing.AddItem();
     }
 }

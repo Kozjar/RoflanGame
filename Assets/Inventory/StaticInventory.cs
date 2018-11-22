@@ -29,29 +29,29 @@ public static class Inventory
 
     public static bool FindItemWithName(string name)
     {
+        //Просто проверяем имя каждого элемент массива на соответствие с name аргументом
         for (int i = 0; i <= 14; i++)
         {
             try
             {
-                // Если i-ый элемент не существует то...
-                if (Inventory._inventory[i].name == name)
+                if (Inventory._inventory[i].name.ToString() == name.ToString())
                 {
-                    return true;
+                    return true; //Возвращаем true, если предмет найдет
                 }
             }
             catch { }
         }
-        return false;
+        return false; //Возвращаем false, если предмета с таким именем в инвентаре нет
     }
 
     public static bool FindItemWithName(string name, ref int index)
     {
+        //То же самое, что и прошлая функция, только здесь переменной, которую ты укажешь как второй аргумент, передастся индекс предмета в инвентаре с таким именем
         for (int i = 0; i <= 14; i++)
         {
             try
             {
-                // Если i-ый элемент не существует то...
-                if (Inventory._inventory[i].name == name)
+                if (Inventory._inventory[i].name.ToString() == name.ToString())
                 {
                     index = i;
                     return true;
@@ -76,7 +76,7 @@ public static class Inventory
             return false;
     }
 
-    public static void DeleteSomeOfStackableItem(string name, int num)
+    public static void DeleteSomeValueOfStackableItem(string name, int num)
     {
         int i = 0;
         if(FindItemWithName(name, ref i))
