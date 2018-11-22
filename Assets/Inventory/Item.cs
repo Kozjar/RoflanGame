@@ -30,6 +30,7 @@ public class Item
 		{
 			AddNotStackableItem();
 		}
+        CreateNotificatioin();
 	}
 	// Функция добавляющаа стакающий предмет в инвентарь.
 	public void AddStackableItem()
@@ -44,12 +45,7 @@ public class Item
 					Inventory.InventoryPanel.GetChild(i).GetChild(0).GetChild(0).GetComponent<Text>().text = Inventory._inventory[i].count.ToString();
 					FoundItem = true;
 					break;
-
-
 				}
-			
-		
-
 		}
 		if(!FoundItem)
 		{
@@ -89,17 +85,29 @@ public class Item
 		//	Inventory.currentSlot++;
 		//}
 	}
-	//public bool FindItem(string Name)
-	//{
-	//	foreach(var index in Inventory._inventory)
-	//	{
-	//		if (index.name == Name)
-	//			return true;
-	//		else
-	//			return false;
-	//	}
-	//	return;
-	//}
+
+
+    private void CreateNotificatioin()
+    {
+        var Panel = GameObject.Instantiate(Inventory.NotificationItemPenel_Prefab, Inventory.NoficationsContent); //Создаем пустую панель уведомления о добавленном предмете
+        Panel.GetChild(0).GetComponent<Text>().text = this.name; //"Предмет получен: *добавляем сюда имя этого предмета*"
+        if (this.IsStackable) //Если добавляется стакающийся предмет, то в скобках указываем его кол-во
+            Panel.GetChild(0).GetComponent<Text>().text += " (" + count.ToString() + ")";
+        GameObject.Destroy(Panel, 3); //Уничтожаем эту панель через 3 секунды. Можно было еще через коротину сделать красивое затемнение, но потом уже
+
+    }
+
+    IEnumerator CreateNotificationCorourine(Transform Panel)
+    {
+        Transform ThisNotice;
+        bool Wait = false;
+        do
+        {
+            ThisNotice = GameObject.Instantiate(Panel, Inventory.NoficationsContent);
+            Wait = true;
+            yield return new WaitForSeconds(3f);
+        } while (!Wait);
+    }
 }
 
 
