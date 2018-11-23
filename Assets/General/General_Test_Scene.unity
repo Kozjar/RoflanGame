@@ -1969,6 +1969,7 @@ MonoBehaviour:
   Inv: {fileID: 1028416022}
   player: {fileID: 792995345}
   Staticdata: {fileID: 1880149043}
+  EventSystem: {fileID: 1440414452}
 --- !u!212 &417150244
 SpriteRenderer:
   m_ObjectHideFlags: 0
