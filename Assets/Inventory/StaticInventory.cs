@@ -4,7 +4,10 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class StaticInventory : MonoBehaviour {
-
+    public void ChangeDataBool(ref bool DataProperty)
+    {
+        Debug.Log("ChangeDataBool commit");
+    }
     public void DeleteItemWithName(string name)
     {
         int index = 0;

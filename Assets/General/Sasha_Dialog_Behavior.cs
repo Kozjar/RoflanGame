@@ -23,8 +23,15 @@ public class Sasha_Dialog : NPCDialog
 {
     public override void startDialog()
     {
-        nod[0].reply[2].ShoudBeShowen = Inventory.FindItemWithName("Кристалл");
-        nod[2].reply[1].ShoudBeShowen = Inventory.FindItemWithName("Кристалл");
+        if ((GameStats.Dialogs.CurrentNode_NPC[0] == 3) || (GameStats.Dialogs.CurrentNode_NPC[0] == 5))
+            if (Inventory.FindItemWithName("Кристалл") && Inventory.FindItemWithName("Корень"))
+                GameStats.Dialogs.CurrentNode_NPC[0] = 6;
+        if (Inventory.FindItemWithName("Кристалл") && Inventory.FindItemWithName("Корень"))
+        {
+            node[1].reply[2].ShoudBeShowen = true;
+            node[2].reply[1].ShoudBeShowen = true;
+        }
+
         base.startDialog();
     }
 }

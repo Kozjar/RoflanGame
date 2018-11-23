@@ -5,9 +5,9 @@ using UnityEngine;
 public class Data : MonoBehaviour {
     private void Start()
     {
-        GameStats.Dialogs.CurrentNod_NPC = new int[2];
-        GameStats.Dialogs.CurrentNod_NPC[0] = 0;
-        GameStats.Dialogs.CurrentNod_NPC[1] = 0;
+        GameStats.Dialogs.CurrentNode_NPC = new int[2];
+        GameStats.Dialogs.CurrentNode_NPC[0] = 0;
+        GameStats.Dialogs.CurrentNode_NPC[1] = 0;
 
     }
 }
@@ -18,7 +18,7 @@ public static class GameStats
     public static class Dialogs
     {
         public static bool FackedRedSword;
-        public static int[] CurrentNod_NPC;
+        public static int[] CurrentNode_NPC;
 
     }
 }
