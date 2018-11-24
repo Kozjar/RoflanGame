@@ -106,17 +106,23 @@ public class Item
 		//bool EmprtySlot=false;
 		for (int i = 0; i <= 14; i++)
 		{
-			// Если i-ый элемент не существует то...
-			if (Inventory._inventory[i] == null)
-			{
-				// Добавляем предмет в пустой слот.
-				Object.Instantiate(PrefabItem, Inventory.InventoryPanel.GetChild(i));
-				// Записываем этот предмет в массив класса.
-				Inventory._inventory[i] = new Item(this);
-				// Ломаем нахуй код.
-				break;
+            // Если i-ый элемент не существует то...
+            try
+            {
+                Inventory.InventoryPanel.GetChild(i).GetChild(0);
+                Debug.Log("Try");
 
-			}
+            }
+            catch
+            {
+                Debug.Log("Catch");
+                // Добавляем предмет в пустой слот.
+                Object.Instantiate(PrefabItem, Inventory.InventoryPanel.GetChild(i));
+                // Записываем этот предмет в массив класса.
+                Inventory._inventory[i] = new Item(this);
+                // Ломаем нахуй код.
+                break;
+            }
 		}
 	}
 

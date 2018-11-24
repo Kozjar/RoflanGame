@@ -9,7 +9,10 @@ public class Sasha_Dialog_Behavior : MonoBehaviour {
 
     private void Start()
     {
-        //GetComponent<Button>().onClick.AddListener(delegate { npc1_dialog.startDialog(); });
+        if (GameStats.Dialogs.TellMerchantAboutWomen)
+        {
+            gameObject.SetActive(false);
+        }
     }
     public void StartDialog()
     {

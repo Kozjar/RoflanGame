@@ -8,9 +8,8 @@ public class ItemInfo : MonoBehaviour
     public Item[] ThisItem;
 
     //Функция добавления этого предмета в инвентарь
-    public void AddThisItem()
+    public void AddThisItem(int index)
     {
-        foreach (var Thing in ThisItem)
-            Thing.AddItem();
+        ThisItem[index].AddItem();
     }
 }

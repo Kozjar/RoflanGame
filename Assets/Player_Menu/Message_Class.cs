@@ -11,7 +11,7 @@ public class Message_Class : MonoBehaviour {
     //Потом приравниваем все поля такого же, но статического класса к полям этого экземпляра.
     //Все это делается, чтобы не пришлось для каждого письма ручками в инспекторе указывать одни и те же панель меню, префаб и т.д.
 
-    private void Start()
+    private void Awake()
     {
         MessageSettingsAnotherStatic.FullTextArea = set.FullTextArea;
         MessageSettingsAnotherStatic._Content = set._Content;

@@ -38,6 +38,7 @@ public static class Inventory
 {
     public static Item[] _inventory = new Item[14];
     public static int currentSlot = 0;
+    public static Transform DialogPanel;
     public static Transform InventoryPanel;
     public static Transform NoficationsContent;
     public static Transform NotificationItemPenel_Prefab;
@@ -99,7 +100,7 @@ public static class Inventory
             if (_inventory[i].count >= num)
             {
                 _inventory[i].count -= num;
-                InventoryPanel.GetChild(i).GetComponent<Text>().text = _inventory[i].count.ToString();
+                InventoryPanel.GetChild(i).GetChild(0).GetChild(0).gameObject.GetComponent<Text>().text = "100"/*_inventory[i].count.ToString()*/;
             }
         }
     }

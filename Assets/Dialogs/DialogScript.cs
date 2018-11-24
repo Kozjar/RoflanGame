@@ -20,7 +20,6 @@ public class NPCDialog
 {
     public int NPC_ID;
     public string name; 
-    public Transform DialogPanel;
     public Node[] node;
 
     [System.Serializable]
@@ -47,8 +46,8 @@ public class NPCDialog
 
     public virtual void startDialog()
     {
-        DialogPanel.gameObject.SetActive(true);
-        DialogPanel.GetChild(0).GetComponent<Text>().text = name;
+        Inventory.DialogPanel.gameObject.SetActive(true);
+        Inventory.DialogPanel.GetChild(0).GetComponent<Text>().text = name;
         putNode();
     }
 
@@ -63,7 +62,7 @@ public class NPCDialog
         //{
         //}
         if (reply.CloseDialog)  //Закрываем диалог, если надо, или отображаем следующий нод
-            DialogPanel.gameObject.SetActive(false);
+            Inventory.DialogPanel.gameObject.SetActive(false);
         else putNode();
     }
 
@@ -75,8 +74,8 @@ public class NPCDialog
     public void putNode()
     {
         int currentNode = GameStats.Dialogs.CurrentNode_NPC[NPC_ID];  //Записываем номер текущего нода в переменную для удобства
-        DialogPanel.GetChild(1).GetComponent<Text>().text = node[currentNode].NPC_Text;   //Отображаем текст npc
-        Transform Buttons = DialogPanel.GetChild(2);    //Заносим панель с кнопками в отдельную переменную для удобства
+        Inventory.DialogPanel.GetChild(1).GetComponent<Text>().text = node[currentNode].NPC_Text;   //Отображаем текст npc
+        Transform Buttons = Inventory.DialogPanel.GetChild(2);    //Заносим панель с кнопками в отдельную переменную для удобства
         int i = 0;  //Индекс текущего ответа
         //Берем по порядку каждую кнопку и, если ответ с таким номером существует и должен быть показан, показываем саму кнопку и добавляем к ней Listener
         foreach (Transform child in Buttons)

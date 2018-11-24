@@ -17,7 +17,8 @@ public static class GameStats
 {
     public static class Dialogs
     {
-        public static bool FackedRedSword;
+        public static bool TellMerchantAboutWomen = false;
+        public static bool KnowAboutFlower = false;
         public static int[] CurrentNode_NPC;
 
     }
