@@ -2,12 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public  class Hea:MonoBehaviour {
-   
-}
-public static class Rafl
+
+public static class SceneINFO_Dialog
 {
-    public static string nams = "asf";
-    public static int count2 = 5;
-    public static char mouse;
+    public static int ScenIDLoad;
+    public static string PreSceneText;
 }

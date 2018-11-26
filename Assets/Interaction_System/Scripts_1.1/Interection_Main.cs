@@ -17,7 +17,12 @@ public class Interection_Main : MonoBehaviour {
     public Vector2 hotSpot = Vector2.zero;
     public bool DeleteClickEvent;
 
-
+    private void Start()
+    {
+        if (DeleteClickEvent)
+            if (GameStats.ItemCondition.TakeFromBag)
+                transform.GetChild(0).GetComponent<BoxCollider2D>().enabled = false;
+    }
     void OnMouseEnter()
     {
         MouseOnObject = true;
@@ -40,7 +45,10 @@ public class Interection_Main : MonoBehaviour {
             Cursor.SetCursor(null, Vector2.zero, cursorMode);
             OnClickEvent.Invoke();
             if (DeleteClickEvent)
+            {
+                GameStats.ItemCondition.TakeFromBag = true;
                 transform.GetChild(0).GetComponent<BoxCollider2D>().enabled = false;
+            }
         }
     }
 

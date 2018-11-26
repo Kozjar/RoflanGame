@@ -71,7 +71,7 @@ public class NPCDialog
         GameStats.Dialogs.CurrentNode_NPC[NPC_ID] = NewNumber;
     }
 
-    public void putNode()
+    public virtual void putNode()
     {
         int currentNode = GameStats.Dialogs.CurrentNode_NPC[NPC_ID];  //Записываем номер текущего нода в переменную для удобства
         Inventory.DialogPanel.GetChild(1).GetComponent<Text>().text = node[currentNode].NPC_Text;   //Отображаем текст npc
@@ -91,9 +91,10 @@ public class NPCDialog
                     child.GetComponent<Button>().onClick.RemoveAllListeners();  //Удаляем все прошлые Listeners
                     child.gameObject.SetActive(true);
                     child.GetChild(0).GetComponent<Text>().text = _reply.replyText;    //Текс ответа
-                    child.GetComponent<Button>().onClick.AddListener(delegate { NextNode(_reply); });   //Задаем листенер перехода на следующий нод в зависимости от ответа номера этой кнопки
                     if (_reply.OnReplyEvent != null)
                         child.GetComponent<Button>().onClick.AddListener(delegate { _reply.OnReplyEvent.Invoke(); }); //Добавляем к кнопке ответа действие, которое мы указали для конкретного ответа
+                    child.GetComponent<Button>().onClick.AddListener(delegate { NextNode(_reply); });   //Задаем листенер перехода на следующий нод в зависимости от ответа номера этой кнопки
+
                 }
             }
             catch

@@ -17,6 +17,17 @@ public class Message_Class : MonoBehaviour {
         MessageSettingsAnotherStatic._Content = set._Content;
         MessageSettingsAnotherStatic.Prefab = set.Prefab;
     }
+    private void Start()
+    {
+        foreach(var message in MessageInventory.MessageStack)
+        {
+            GameObject Clone;
+            Clone = GameObject.Instantiate(MessageSettingsAnotherStatic.Prefab, MessageSettingsAnotherStatic._Content); //создаем пустую панель письма в меню писем
+            Clone.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = message.Miniature; //Задаем миниатюру письма
+            Clone.transform.GetChild(1).GetComponent<Text>().text = message.GetMiniText(); //Задаем краткий текст
+            Clone.transform.GetChild(2).GetComponent<Button>().onClick.AddListener(delegate { message.ShowMessage(message.Text_Message); }); //Задаем инструкции кнопки "Read"
+        }
+    }
 }
 
 
@@ -73,6 +84,7 @@ public static class MessageInventory
 [System.Serializable]
 public class Message
 {
+    public string name;
     [TextArea]
     public string Text_Message; //Текст письма
     public Sprite Miniature; //миниатюра, которая будет отображаться в инвентаре
@@ -80,12 +92,13 @@ public class Message
     //Добавляет письмо в инвентарь
     public void AddThisMessageToInventory()
     {
-            MessageInventory.MessageStack.Add(this); //Добавляем новое письмо в коллекцию писем
-            GameObject Clone;
-            Clone = GameObject.Instantiate(MessageSettingsAnotherStatic.Prefab, MessageSettingsAnotherStatic._Content); //создаем пустую панель письма в меню писем
-            Clone.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = Miniature; //Задаем миниатюру письма
-            Clone.transform.GetChild(1).GetComponent<Text>().text = GetMiniText(); //Задаем краткий текст
-            Clone.transform.GetChild(2).GetComponent<Button>().onClick.AddListener(delegate { ShowMessage(Text_Message); }); //Задаем инструкции кнопки "Read"
+        MessageInventory.MessageStack.Add(this); //Добавляем новое письмо в коллекцию писем
+        GameObject Clone;
+        Clone = GameObject.Instantiate(MessageSettingsAnotherStatic.Prefab, MessageSettingsAnotherStatic._Content); //создаем пустую панель письма в меню писем
+        Clone.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = Miniature; //Задаем миниатюру письма
+        Clone.transform.GetChild(1).GetComponent<Text>().text = GetMiniText(); //Задаем краткий текст
+        Clone.transform.GetChild(2).GetComponent<Button>().onClick.AddListener(delegate { ShowMessage(Text_Message); }); //Задаем инструкции кнопки "Read"
+        CreateNotificatioin();
     }
 
     //Показать полное письмо
@@ -107,5 +120,11 @@ public class Message
             _Text = Text_Message.Substring(0, x) + "...";
 
         return _Text;
+    }
+    private void CreateNotificatioin()
+    {
+        var Panel = GameObject.Instantiate(Inventory.NotificationItemPenel_Prefab, Inventory.NoficationsContent); //Создаем пустую панель уведомления о добавленном предмете
+        Panel.GetChild(1).GetComponent<Text>().text = name; //"Предмет получен: *добавляем сюда имя этого предмета*"
+        GameObject.Destroy(Panel.gameObject, 3); //Уничтожаем эту панель через 3 секунды. Можно было еще через коротину сделать красивое затемнение, но потом уже
     }
 }

@@ -20,21 +20,31 @@ public class Item
 
     public Item(Item NewItem)
     {
-        name = NewItem.name.ToString();
+        if (!string.IsNullOrEmpty(NewItem.name))
+            name = NewItem.name;
         count = NewItem.count;
         IsStackable = NewItem.IsStackable;
-        Description = NewItem.Description.ToString();
+        Description = NewItem.Description;
         PrefabItem = NewItem.PrefabItem;
     }
     public Item()
     {
-        name = "";
+        name = null;
         count = 0;
         IsStackable = false;
         Description = "";
         PrefabItem = null;
     }
-
+    public Item ConstractItem()
+    {
+        Item ReturnItem = new Item();
+        ReturnItem.name = name;
+        ReturnItem.count = count;
+        ReturnItem.IsStackable = IsStackable;
+        ReturnItem.Description = Description;
+        ReturnItem.PrefabItem = PrefabItem;
+        return ReturnItem;
+    }
     // Функция проверяющая на тип предмета.
     public void AddItem()
 	{

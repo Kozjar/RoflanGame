@@ -19,9 +19,10 @@ public class Merchant_Dialog : NPCDialog
         node[1].reply[3].ShoudBeShowen = GameStats.Dialogs.KnowAboutFlower;
         node[0].reply[2].ShoudBeShowen = Inventory.FindStackItemWithCount_AtLeast("Деньги", 100);
         node[1].reply[2].ShoudBeShowen = Inventory.FindStackItemWithCount_AtLeast("Деньги", 100);
-        node[1].reply[1].OnReplyEvent.AddListener(delegate { node[1].reply[1].ShoudBeShowen = false; });
+        //node[1].reply[1].OnReplyEvent.AddListener(delegate { node[1].reply[1].ShoudBeShowen = false; });
         node[3].reply[1].ShoudBeShowen = Inventory.FindStackItemWithCount_AtLeast("Деньги", 100);
         node[3].reply[2].ShoudBeShowen = GameStats.Dialogs.KnowAboutFlower;
+        node[4].reply[0].OnReplyEvent.AddListener(delegate { GameStats.Dialogs.TellMerchantAboutWomen = true; });
         node[5].reply[0].OnReplyEvent.AddListener(delegate { Inventory.DeleteSomeValueOfStackableItem("Деньги", 100); });
         //node[5].reply[0].OnReplyEvent.AddListener(delegate { Inventory.DeleteSomeValueOfStackableItem("Деньги", 100); });
         node[5].reply[0].OnReplyEvent.AddListener(delegate {

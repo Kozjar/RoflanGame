@@ -50,7 +50,7 @@ public static class Inventory
         {
             try
             {
-                if (Inventory._inventory[i].name.ToString() == name.ToString())
+                if (Inventory._inventory[i].name.CompareTo(name) == 0)
                 {
                     return true; //Возвращаем true, если предмет найдет
                 }
@@ -67,7 +67,7 @@ public static class Inventory
         {
             try
             {
-                if (Inventory._inventory[i].name.ToString() == name.ToString())
+                if (Inventory._inventory[i].name.CompareTo(name) == 0)
                 {
                     index = i;
                     return true;
@@ -100,7 +100,7 @@ public static class Inventory
             if (_inventory[i].count >= num)
             {
                 _inventory[i].count -= num;
-                InventoryPanel.GetChild(i).GetChild(0).GetChild(0).gameObject.GetComponent<Text>().text = "100"/*_inventory[i].count.ToString()*/;
+                InventoryPanel.GetChild(i).GetChild(0).GetChild(0).gameObject.GetComponent<Text>().text = _inventory[i].count.ToString();
             }
         }
     }
@@ -119,4 +119,9 @@ public static class Inventory
     }
 
 
+}
+
+public static class ItemInAlchemyCase
+{
+    public static Item[] Items = new Item[3];
 }

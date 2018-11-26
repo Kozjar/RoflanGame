@@ -6,12 +6,14 @@ using UnityEngine.UI;
 public class Sasha_Dialog_Behavior : MonoBehaviour {
 
     public Sasha_Dialog Sasha_Dialog;
+    public GameObject LastMessage;
 
     private void Start()
     {
         if (GameStats.Dialogs.TellMerchantAboutWomen)
         {
             gameObject.SetActive(false);
+            LastMessage.SetActive(true);
         }
     }
     public void StartDialog()
