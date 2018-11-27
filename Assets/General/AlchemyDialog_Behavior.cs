@@ -145,115 +145,6 @@ public class AlchemyDialog : NPCDialog
 {
     //[HideInInspector]
     public string Node1Original;
-    public override void startDialog()
-    {
-        FillItemsInNode();
-
-        //node[3].reply[0].OnReplyEvent.AddListener(delegate
-        //{
-        //    int i = 0;
-        //    Inventory.FindItemWithName("Кристалл", ref i);
-        //    ItemInAlchemyCase.Items[0] = Inventory._inventory[i].ConstractItem();
-        //    Inventory.DeleteItemWithName("Кристалл");
-        //    FillItemsInNode();
-        //});
-        //node[3].reply[1].OnReplyEvent.AddListener(delegate
-        //{
-        //    int i = 0;
-        //    Inventory.FindItemWithName("Корень", ref i);
-        //    ItemInAlchemyCase.Items[0] = Inventory._inventory[i].ConstractItem();
-        //    Inventory.DeleteItemWithName("Корень");
-        //    FillItemsInNode();
-        //});
-        //node[3].reply[2].OnReplyEvent.AddListener(delegate
-        //{
-        //    int i = 0;
-        //    Inventory.FindItemWithName("Язык Икабоса", ref i);
-        //    ItemInAlchemyCase.Items[0] = Inventory._inventory[i].ConstractItem();
-        //    Inventory.DeleteItemWithName("Язык Икабоса");
-        //    FillItemsInNode();
-        //});
-        //node[3].reply[3].OnReplyEvent.AddListener(delegate
-        //{
-        //    if (ItemInAlchemyCase.Items[0] != null)
-        //    {
-        //        ItemInAlchemyCase.Items[0].AddItem();
-        //        ItemInAlchemyCase.Items[0] = null;
-        //    }
-        //    FillItemsInNode();
-        //});
-
-        //node[4].reply[0].OnReplyEvent.AddListener(delegate
-        //{
-        //    int i = 0;
-        //    Inventory.FindItemWithName("Кристалл", ref i);
-        //    ItemInAlchemyCase.Items[1] = Inventory._inventory[i].ConstractItem();
-        //    Inventory.DeleteItemWithName("Кристалл");
-        //    FillItemsInNode();
-        //});
-        //node[4].reply[1].OnReplyEvent.AddListener(delegate
-        //{
-        //    int i = 0;
-        //    Inventory.FindItemWithName("Корень", ref i);
-        //    ItemInAlchemyCase.Items[1] = Inventory._inventory[i].ConstractItem();
-        //    Inventory.DeleteItemWithName("Корень");
-        //    FillItemsInNode();
-        //});
-        //node[4].reply[2].OnReplyEvent.AddListener(delegate
-        //{
-        //    int i = 0;
-        //    Inventory.FindItemWithName("Язык Икабоса", ref i);
-        //    ItemInAlchemyCase.Items[1] = Inventory._inventory[i].ConstractItem();
-        //    Inventory.DeleteItemWithName("Язык Икабоса");
-        //    FillItemsInNode();
-        //});
-        //node[4].reply[3].OnReplyEvent.AddListener(delegate
-        //{
-        //    if (ItemInAlchemyCase.Items[1] != null)
-        //    {
-        //        ItemInAlchemyCase.Items[1].AddItem();
-        //        ItemInAlchemyCase.Items[1] = null;
-        //        FillItemsInNode();
-        //    }
-
-        //});
-
-        //node[5].reply[0].OnReplyEvent.AddListener(delegate
-        //{
-        //    int i = 0;
-        //    Inventory.FindItemWithName("Кристалл", ref i);
-        //    ItemInAlchemyCase.Items[2] = Inventory._inventory[i].ConstractItem();
-        //    Inventory.DeleteItemWithName("Кристалл");
-        //    FillItemsInNode();
-        //});
-        //node[5].reply[1].OnReplyEvent.AddListener(delegate
-        //{
-        //    int i = 0;
-        //    Inventory.FindItemWithName("Корень", ref i);
-        //    ItemInAlchemyCase.Items[2] = Inventory._inventory[i].ConstractItem();
-        //    Inventory.DeleteItemWithName("Корень");
-        //    FillItemsInNode();
-        //});
-        //node[5].reply[2].OnReplyEvent.AddListener(delegate
-        //{
-        //    int i = 0;
-        //    Inventory.FindItemWithName("Язык Икабоса", ref i);
-        //    ItemInAlchemyCase.Items[2] = Inventory._inventory[i].ConstractItem();
-        //    Inventory.DeleteItemWithName("Язык Икабоса");
-        //    FillItemsInNode();
-        //});
-        //node[5].reply[3].OnReplyEvent.AddListener(delegate
-        //{
-        //    if (ItemInAlchemyCase.Items[2] != null)
-        //    {
-        //        ItemInAlchemyCase.Items[2].AddItem();
-        //        ItemInAlchemyCase.Items[2] = null;
-        //        FillItemsInNode();
-        //    }
-
-        //});
-        base.startDialog();
-    }
     public void FillItemsInNode()
     {
         node[1].NPC_Text = Node1Original;
@@ -289,6 +180,15 @@ public class AlchemyDialog : NPCDialog
         node[5].reply[0].ShoudBeShowen = Inventory.FindItemWithName("Кристалл");
         node[5].reply[1].ShoudBeShowen = Inventory.FindItemWithName("Корень");
         node[5].reply[2].ShoudBeShowen = Inventory.FindItemWithName("Язык Икабоса");
+
+        bool AllItems = true;
+        for (int i = 0; i < 3; i++)
+            if (ItemInAlchemyCase.Items[i] == null)
+            {
+                AllItems = false;
+                break;
+            }
+        node[1].reply[4].ShoudBeShowen = AllItems;
         base.putNode();
     }
 }
