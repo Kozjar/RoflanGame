@@ -456,10 +456,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d15a008c1e6703c4db6ad68c83503776, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberOfRays: 64
-  lightAngle: -90
-  lightCone: 0
-  range: 12
+  numberOfRays: 42
+  lightAngle: 180
+  lightCone: 90
+  raycastMaxDistance: 10
+  lightSourceSize: 0
 --- !u!82 &468560015
 AudioSource:
   m_ObjectHideFlags: 0
@@ -961,7 +962,7 @@ GameObject:
   - component: {fileID: 959390397}
   m_Layer: 0
   m_Name: New Sprite (2)
-  m_TagString: Right
+  m_TagString: Left
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
