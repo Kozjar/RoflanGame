@@ -24,10 +24,10 @@ TagManager:
   - Furniture
   - Player
   - InteractionArea
+  - Floor1
+  - Floor2
+  - Floor3
   - CommonRay
-  - Light
-  - 
-  - 
   - 
   - 
   - 

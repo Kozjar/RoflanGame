@@ -20,8 +20,6 @@ public class Rays : MonoBehaviour {
 	[Range(0, 360)]
 	public float lightCone = 90;
 
-	private SpriteRenderer sprite;
-
 	private float originOffset = 0.5f;
 
 	public float raycastMaxDistance = 10f;
@@ -29,74 +27,16 @@ public class Rays : MonoBehaviour {
 	[SerializeField]
 	public float lightSourceSize = 0;
 
-
-	private GameObject Player;
-	// Перегружаем унарный оператор - 
-	//public static Rays operator -(Rays op) { Rays result = new Rays(); result.range = -op.range; return result; }
+    public LayerMask mask = 11;
 
 	void Start () {
 
-		
-
-			// Получем доступ к свойствам SpriteRender
-			sprite = GetComponentInChildren<SpriteRenderer>();
-		Player = GameObject.Find("Player");
-		// Используем перегруженный унарный оператор
+        Debug.Log(LayerMask.LayerToName(mask));
+	
 	}
-
 	void Update () {
-		//foreach (var direction in ArrayOfVectors)
-		//	CheckRaycast(direction);
-
-		if (this.gameObject.GetComponent<MoveTest>().Points[PreviousFlag()].tag == "Right")
-		{
-			sprite.flipX = false;
-			lightAngle = 0;
-
-		}
-		else if(this.gameObject.GetComponent<MoveTest>().Points[PreviousFlag()].tag == "Left")
-		{
-			sprite.flipX = true;
-			lightAngle = -180;
-		
-		}
-		else if (this.gameObject.GetComponent<MoveTest>().Points[PreviousFlag()].tag == "Up")
-		{
-			lightAngle = 90;
-		
-		}
-		else if (this.gameObject.GetComponent<MoveTest>().Points[PreviousFlag()].tag == "Down")
-		{
-
-			lightAngle = -90;
-		}
 		CreateVectors();
 	}
-
-	//////////оставлю это здесь на всякий случай P.S старая система лучей///////////////////////////
-	////////////////////////////////////////////////////////////////////////////////////////////
-
-	//private RaycastHit2D CheckRaycast(Vector2 direction)
-	//{
-	//	// Хуй пойми что делает эта строчка, но как я понял она как то отвечает за позицию откуда будет выходить луч
-	//	float directionOriginOffset = originOffset * (direction.x > 0 ? 1 : -1);
-	//	// Позиция откуда выходят лучи
-	//	Vector2 startingPosition = new Vector2(transform.position.x + directionOriginOffset, transform.position.y+1.5f);
-	//	// Визуальная прорисовка лучей
-	//	//Debug.DrawRay(startingPosition, direction, Color.red);
-	//	// Просто переменная 
-	//	RaycastHit2D hit = Physics2D.Raycast(startingPosition, direction, raycastMaxDistance);
-	//	// Чекаем не задел ли луч какой-либо объект
-	//	if (hit.collider != null && hit.collider.tag == "Player")
-	//	{
-	//		Debug.DrawRay(startingPosition, direction, Color.yellow);
-	//		for(int i=0;i< this.gameObject.GetComponent<MoveTest>().Points.objects.Length;i++)
-	//			this.gameObject.GetComponent<MoveTest>().Points[i]=Player.transform;
-	//		this.gameObject.GetComponent<AudioSource>().enabled = true;
-	//		//Debug.Log("Вас заметили");
-	//	}
-	//	return Physics2D.Raycast(startingPosition, direction, raycastMaxDistance);
-	//}
 
 	private void CreateVectors()
 	{
@@ -119,16 +59,14 @@ public class Rays : MonoBehaviour {
 			{
 				Debug.DrawRay(origin, direction,Color.red);
 			}
-			//ArrayOfVectors[i] = new Vector2(range, i +1);
-			//	ArrayOfVectors[i + numberOfRays /2] = new Vector2(range, -i);
 		}
 
 	}
-	public int PreviousFlag()
-	{
-		if (this.gameObject.GetComponent<MoveTest>()._currentPoint == 0)
-			return this.gameObject.GetComponent<MoveTest>().Points.objects.Length - 1;
-		else
-			return this.gameObject.GetComponent<MoveTest>()._currentPoint - 1;
-	}
+	//public int PreviousFlag()
+	//{
+	//	if (this.gameObject.GetComponent<MoveTest>()._currentPoint == 0)
+	//		return this.gameObject.GetComponent<MoveTest>().Points.objects.Length - 1;
+	//	else
+	//		return this.gameObject.GetComponent<MoveTest>()._currentPoint - 1;
+	//}
 }
