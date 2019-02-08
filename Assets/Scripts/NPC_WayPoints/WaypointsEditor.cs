@@ -12,6 +12,11 @@ public class WaypointsEditor : UnityEditor.Editor {
 	private SerializedProperty _turnDown;
 	private SerializedProperty _turnUp;
 
+    private bool lastLeft;
+    private bool lastRight;
+    private bool lastDown;
+    private bool lastUp;
+
     private SerializedProperty _lookLeft;
     private SerializedProperty _lookRight;
     private SerializedProperty _lookUp;
@@ -34,15 +39,34 @@ public class WaypointsEditor : UnityEditor.Editor {
         ws = (Waypoints_System) target;
         EditorGUILayout.LabelField("________________________________________________________________________________");
         _turnLeft.boolValue = EditorGUILayout.Toggle("isTurnLeft", _turnLeft.boolValue);
-        _turnRight.boolValue = EditorGUILayout.Toggle("isTurnRight", _turnRight.boolValue);
-        _turnDown.boolValue = EditorGUILayout.Toggle("isTurnDown", _turnDown.boolValue);
-        _turnUp.boolValue = EditorGUILayout.Toggle("isTurnUp", _turnUp.boolValue);
-        EditorGUILayout.LabelField("________________________________________________________________________________");
-
-        if (_turnLeft.hasMultipleDifferentValues)
+        if (_turnLeft.boolValue && !lastLeft)
         {
-            
+            _turnRight.boolValue = false;
+            _turnDown.boolValue = false;
+            _turnUp.boolValue = false;
         }
+        _turnRight.boolValue = EditorGUILayout.Toggle("isTurnRight", _turnRight.boolValue);
+        if (_turnRight.boolValue && !lastRight)
+        {
+            _turnLeft.boolValue = false;
+            _turnDown.boolValue = false;
+            _turnUp.boolValue = false;
+        }
+        _turnDown.boolValue = EditorGUILayout.Toggle("isTurnDown", _turnDown.boolValue);
+        if (_turnDown.boolValue && !lastDown)
+        {
+            _turnLeft.boolValue = false;
+            _turnRight.boolValue = false;
+            _turnUp.boolValue = false;
+        }
+        _turnUp.boolValue = EditorGUILayout.Toggle("isTurnUp", _turnUp.boolValue);
+        if (_turnUp.boolValue && !lastUp)
+        {
+            _turnLeft.boolValue = false;
+            _turnRight.boolValue = false;
+            _turnDown.boolValue = false;
+        }
+        EditorGUILayout.LabelField("________________________________________________________________________________");
 
         serializedObject.ApplyModifiedProperties();
 
