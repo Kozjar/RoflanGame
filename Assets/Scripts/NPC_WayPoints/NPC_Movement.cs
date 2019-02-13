@@ -14,12 +14,16 @@ public class NPC_Movement : MonoBehaviour {
 	private Transform[] TempBack;
 	private Transform[] TempFoward;
 	// Скорость и дистанция
+    [Space]
 	public float Speed = 0.0f;
 	private float Distance = 0.0f;
 
+
 	void Start()
 	{
-		
+        StartCoroutine(LookAround());
+
+
 		int j = 0;
 		TempBack= new Transform[points.objects.Length];
 		TempFoward = new Transform[points.objects.Length];
@@ -34,9 +38,6 @@ public class NPC_Movement : MonoBehaviour {
 		{
 			TempFoward[i] = points[i];
 		}
-
-
-		System.Array.Reverse(points.objects);
 
 	}
 	
@@ -64,21 +65,37 @@ public class NPC_Movement : MonoBehaviour {
 
 			float currentDistance = Vector3.Distance(transform.position, points[currentPoint].position);
 
-			if (currentDistance <= Distance)
-			{
-				if (points[currentPoint].tag == "Wait" )
-				{
-					if (!Waiting)
-					{
-					StartCoroutine(stop());
-					Waiting = true;
-					}
-				}
-				else
-					currentPoint++;
-			}
+        //if (currentDistance <= Distance)
+        //{
+        //	if (points[currentPoint].GetComponent<Waypoints_System>().lookLeft >0 )
+        //	{
 
-		Vector3 directionToPoint = points[currentPoint].position - transform.position;
+
+        //		if (!Waiting)
+        //		{
+        //		StartCoroutine(stop());
+        //		Waiting = true;
+        //		}
+        //	}
+        //	else
+        //		currentPoint++;
+
+        //}
+
+        if (currentDistance <= Distance)
+        {
+            if (points[currentPoint+1].GetComponent<Waypoints_System>().lookLeft > 0)
+            {
+                if (!Waiting)
+                {
+                    StartCoroutine(LookAround());
+                    Waiting = true;
+                }
+                else
+                    currentPoint++;
+            }
+        }
+                Vector3 directionToPoint = points[currentPoint].position - transform.position;
 		transform.position = Vector3.MoveTowards(transform.position, points[currentPoint].position, Speed * Time.deltaTime);
 	}
 
@@ -89,6 +106,16 @@ public class NPC_Movement : MonoBehaviour {
 		currentPoint++;
 	}
 
+    IEnumerator LookAround()
+    {
+        while (gameObject.GetComponent<Rays>().lightAngle != 180)
+        {
+            yield return new WaitForSeconds(0.03f);
+            gameObject.GetComponent<Rays>().lightAngle++;
+        }
+        Waiting = false;
+        currentPoint++;
+    }
 
 
 }

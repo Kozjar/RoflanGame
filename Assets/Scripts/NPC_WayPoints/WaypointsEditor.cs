@@ -30,7 +30,11 @@ public class WaypointsEditor : UnityEditor.Editor {
 		_turnRight = serializedObject.FindProperty("turnRight");
 		_turnDown = serializedObject.FindProperty("turnDown");
 		_turnUp = serializedObject.FindProperty("turnUp");
-	}
+        _lookLeft = serializedObject.FindProperty("lookLeft");
+        _lookRight = serializedObject.FindProperty("lookRight");
+        _lookUp = serializedObject.FindProperty("lookUp");
+        _lookDown = serializedObject.FindProperty("lookDown");
+    }
 
 	public override void OnInspectorGUI()
 	{
@@ -67,7 +71,11 @@ public class WaypointsEditor : UnityEditor.Editor {
             _turnDown.boolValue = false;
         }
         EditorGUILayout.LabelField("________________________________________________________________________________");
-
+        ws.lookLeft = EditorGUILayout.IntField("lookLeft", ws.lookLeft);
+        ws.lookRight = EditorGUILayout.IntField("lookRight", ws.lookRight);
+        ws.lookDown = EditorGUILayout.IntField("lookDown", ws.lookDown);
+        ws.lookUp = EditorGUILayout.IntField("lookLeft", ws.lookUp);
+        
         serializedObject.ApplyModifiedProperties();
 
        
