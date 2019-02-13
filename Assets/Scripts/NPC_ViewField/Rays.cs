@@ -27,20 +27,20 @@ public class Rays : MonoBehaviour {
 	[SerializeField]
 	public float lightSourceSize = 0;
 
-   
+    private NPC_Movement npc_movement;
 
 
     public LayerMask mask = 11;
 
 	void Start () {
 
-        
+        npc_movement = gameObject.GetComponent<NPC_Movement>();
 
 
     }
 	void Update () {
 
-        //ChangeSideRewiev();
+        ChangeSideRewiev();
         CreateVectors();
 	}
    
@@ -71,19 +71,19 @@ public class Rays : MonoBehaviour {
 
     private void ChangeSideRewiev()
     {
-        if (gameObject.GetComponent<NPC_Movement>().points[PreviousFlag()].GetComponent<Waypoints_System>().turnRight == true)
+        if (npc_movement.points[npc_movement.currentPoint].GetComponent<Waypoints_System>().turnRight == true)
         {
 
             lightAngle = 0;
 
         }
-        else if (gameObject.GetComponent<NPC_Movement>().points[PreviousFlag()].GetComponent<Waypoints_System>().turnLeft == true)
+        else if (npc_movement.points[npc_movement.currentPoint].GetComponent<Waypoints_System>().turnLeft == true)
         {
 
             lightAngle = 180;
 
         }
-        else if (gameObject.GetComponent<NPC_Movement>().points[PreviousFlag()].GetComponent<Waypoints_System>().turnDown == true)
+        else if (npc_movement.points[npc_movement.currentPoint].GetComponent<Waypoints_System>().turnDown == true)
         {
 
             lightAngle = 270;
