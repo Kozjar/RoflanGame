@@ -13,7 +13,7 @@ public class Rays : MonoBehaviour {
 	// Угол падения лучей
 	[SerializeField]
 	[Range(-360, 360)]
-	public float lightAngle = -90;
+	public float lightAngle = 0;
 
 	// Расстояние между лучами
 	[SerializeField]
@@ -27,18 +27,24 @@ public class Rays : MonoBehaviour {
 	[SerializeField]
 	public float lightSourceSize = 0;
 
+   
+
+
     public LayerMask mask = 11;
 
 	void Start () {
 
-        Debug.Log(LayerMask.LayerToName(mask));
-	
-	}
-	void Update () {
-		CreateVectors();
-	}
+        
 
-	private void CreateVectors()
+
+    }
+	void Update () {
+
+        //ChangeSideRewiev();
+        CreateVectors();
+	}
+   
+    private void CreateVectors()
 	{
 		float RaySpacing = lightCone / numberOfRays;
 		float initialAngle = lightAngle - (lightCone / 2);
@@ -62,11 +68,38 @@ public class Rays : MonoBehaviour {
 		}
 
 	}
-	//public int PreviousFlag()
-	//{
-	//	if (this.gameObject.GetComponent<MoveTest>()._currentPoint == 0)
-	//		return this.gameObject.GetComponent<MoveTest>().Points.objects.Length - 1;
-	//	else
-	//		return this.gameObject.GetComponent<MoveTest>()._currentPoint - 1;
-	//}
+
+    private void ChangeSideRewiev()
+    {
+        if (gameObject.GetComponent<NPC_Movement>().points[PreviousFlag()].GetComponent<Waypoints_System>().turnRight == true)
+        {
+
+            lightAngle = 0;
+
+        }
+        else if (gameObject.GetComponent<NPC_Movement>().points[PreviousFlag()].GetComponent<Waypoints_System>().turnLeft == true)
+        {
+
+            lightAngle = 180;
+
+        }
+        else if (gameObject.GetComponent<NPC_Movement>().points[PreviousFlag()].GetComponent<Waypoints_System>().turnDown == true)
+        {
+
+            lightAngle = 270;
+
+        }
+        else
+            lightAngle = 90;
+    }
+
+    public int PreviousFlag()
+    {
+        if (gameObject.GetComponent<NPC_Movement>().currentPoint == 0)
+            return gameObject.GetComponent<NPC_Movement>().points.objects.Length - 1;
+        else
+            return gameObject.GetComponent<NPC_Movement>().currentPoint - 1;
+
+    }
+
 }
