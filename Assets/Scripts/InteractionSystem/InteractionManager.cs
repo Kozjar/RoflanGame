@@ -26,6 +26,7 @@ public class InteractionManager : MonoBehaviour {
             Debug.Log("Look at same obj");
             return;
         }
+        Interactions = new IInteraction[3]; //обнуляем массив
         PrevObj = o;
         InteractableObj = o; //Запоминаем объект, с которым в данный момент может быть взаимодействие
         DrawingInteractions = true; //Рисуем над объектом меню взаимодействий
@@ -61,7 +62,7 @@ public class InteractionManager : MonoBehaviour {
         string text = "";
         //берем позицию вверху поцентру объекта
         Vector3 worldPosition = new Vector3(InteractableObj.transform.position.x, 
-                                            InteractableObj.transform.position.y + InteractableObj.gameObject.GetComponent<SpriteRenderer>().size.y / 2, 
+                                            InteractableObj.transform.position.y + InteractableObj.gameObject.GetComponent<SpriteRenderer>().size.y / 2 * InteractableObj.transform.localScale.y, 
                                             InteractableObj.transform.position.z);
         Vector3 screenPosition = Camera.main.WorldToScreenPoint(worldPosition); //Переводим мировые координаты юньки в координаты экрана
         screenPosition.y = Screen.height - screenPosition.y; //Просто более правильная позиция

@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 
 public class LongAction : MonoBehaviour {
+    public float zzz;
+
     public delegate void VoidAction();
 
     public int textSize = 14;
@@ -43,9 +45,11 @@ public class LongAction : MonoBehaviour {
 
     public void DrawProgressBar()
     {
-        Vector3 worldPosition = new Vector3(transform.position.x, transform.position.y + gameObject.GetComponent<SpriteRenderer>().size.y / 2, transform.position.z);
+        Vector3 worldPosition = new Vector3(transform.position.x, 
+            transform.position.y + (gameObject.GetComponent<SpriteRenderer>().size.y - gameObject.GetComponent<SpriteRenderer>().sprite.pivot.y / 100) * gameObject.transform.localScale.y, 
+            transform.position.z);
         Vector3 screenPosition = Camera.main.WorldToScreenPoint(worldPosition);
-        screenPosition.y = Screen.height - screenPosition.y - height * 1.5f;
+        screenPosition.y = Screen.height - screenPosition.y - height * 1.5f + zzz;
         //screenPosition.x = screenPosition.x - width / 2;
 
         GUI.DrawTexture(new Rect(screenPosition.x - width / 2, screenPosition.y, width * (progress / goal), height), Fill);
@@ -68,6 +72,10 @@ public class LongAction : MonoBehaviour {
 
     private void Start()
     {
+        Debug.Log(gameObject.GetComponent<SpriteRenderer>().size.y / gameObject.GetComponent<SpriteRenderer>().sprite.pivot.y / 100);
+        Debug.Log(gameObject.GetComponent<SpriteRenderer>().size.y);
+        Debug.Log(gameObject.GetComponent<SpriteRenderer>().sprite.pivot.y);
+        Debug.Log(transform.position.y + gameObject.GetComponent<SpriteRenderer>().size.y / gameObject.GetComponent<SpriteRenderer>().sprite.pivot.y / 100 * gameObject.transform.localScale.y);
         //SomeClass.instance.Call();
     }
 }
