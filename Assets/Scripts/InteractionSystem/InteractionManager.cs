@@ -29,6 +29,14 @@ public class InteractionManager : MonoBehaviour {
         Interactions = new IInteraction[3]; //обнуляем массив
         PrevObj = o;
         InteractableObj = o; //Запоминаем объект, с которым в данный момент может быть взаимодействие
+        Debug.Log("InteractableObj.GetComponent<SpriteRenderer>().size.y = " + InteractableObj.GetComponent<SpriteRenderer>().size.y);
+        Debug.Log("InteractableObj.GetComponent<SpriteRenderer>().sprite.pivot.y = " + InteractableObj.GetComponent<SpriteRenderer>().sprite.pivot.y);
+        Debug.Log("InteractableObj.transform.localScale.y = " + InteractableObj.transform.localScale.y);
+        Debug.Log("InteractableObj.transform.position.y = " + InteractableObj.transform.position.y);
+        Debug.Log("MicroSum = " + (InteractableObj.GetComponent<SpriteRenderer>().size.y - InteractableObj.GetComponent<SpriteRenderer>().sprite.pivot.y / 100));
+        Debug.Log("* Size = " + ((InteractableObj.GetComponent<SpriteRenderer>().size.y - InteractableObj.GetComponent<SpriteRenderer>().sprite.pivot.y / 100) * InteractableObj.transform.localScale.y));
+        Debug.Log("Sum = " + InteractableObj.transform.position.y + (InteractableObj.GetComponent<SpriteRenderer>().size.y - InteractableObj.GetComponent<SpriteRenderer>().sprite.pivot.y / 100) * InteractableObj.transform.localScale.y);
+        Debug.Log("Sum2 = " + -4.59f + (InteractableObj.GetComponent<SpriteRenderer>().size.y - InteractableObj.GetComponent<SpriteRenderer>().sprite.pivot.y / 100) * InteractableObj.transform.localScale.y);
         DrawingInteractions = true; //Рисуем над объектом меню взаимодействий
         IInteraction[] interactions = o.GetComponents<IInteraction>(); //Берем у объекта все взаимодействия, которые к нему прикреплены
         int i = 0;
@@ -61,8 +69,8 @@ public class InteractionManager : MonoBehaviour {
         int j = 1;
         string text = "";
         //берем позицию вверху поцентру объекта
-        Vector3 worldPosition = new Vector3(InteractableObj.transform.position.x, 
-                                            InteractableObj.transform.position.y + InteractableObj.gameObject.GetComponent<SpriteRenderer>().size.y / 2 * InteractableObj.transform.localScale.y, 
+        Vector3 worldPosition = new Vector3(InteractableObj.transform.position.x,
+                                            InteractableObj.transform.position.y + (InteractableObj.GetComponent<SpriteRenderer>().size.y - InteractableObj.GetComponent<SpriteRenderer>().sprite.pivot.y / 100) * InteractableObj.transform.localScale.y, 
                                             InteractableObj.transform.position.z);
         Vector3 screenPosition = Camera.main.WorldToScreenPoint(worldPosition); //Переводим мировые координаты юньки в координаты экрана
         screenPosition.y = Screen.height - screenPosition.y; //Просто более правильная позиция
