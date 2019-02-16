@@ -5,7 +5,7 @@ using UnityEngine;
 public class FloorPassing : MonoBehaviour {
 
     public int toFloor;
-    private int ToFloor = 10;
+    private int ToFloor = 20;
 	// Use this for initialization
 	void Start () {
         ToFloor += toFloor;

@@ -13,6 +13,6 @@ public class TestCamodInteraction : MonoBehaviour, IInteraction {
     
     public void Action()
     {
-        longAction.StartContinuingAction("Роется в шкафу", 3f, delegate { Debug.Log("Нашел какую-то хуйню"); });
+        longAction.StartContinuingAction("Роется в шкафу", 10f, delegate { Debug.Log("Нашел какую-то хуйню"); });
     }
 }
