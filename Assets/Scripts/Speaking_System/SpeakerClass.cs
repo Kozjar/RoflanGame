@@ -9,7 +9,6 @@ public class SpeakerClass : MonoBehaviour {
     public int textSize = 14;
     public Color textColor = Color.white;
     public Font textFont;
-    public float textHeight = 0.5f;
 
     private IEnumerator a;
     [HideInInspector]
@@ -17,8 +16,10 @@ public class SpeakerClass : MonoBehaviour {
     public SpeachTriggerCollider triggerCollider;
     public SpeakingManager Manager;
 
+    private SpriteRenderer SpriteRend;
     private void Start()
     {
+        SpriteRend = gameObject.GetComponent<SpriteRenderer>();
         if (triggerCollider != null)
             triggerCollider.speechOutput += ShowMessage;
         //StartCoroutine(ShowMessageCoroutine("Leather Man"));
@@ -41,11 +42,12 @@ public class SpeakerClass : MonoBehaviour {
             style.normal.textColor = textColor;
             style.alignment = TextAnchor.MiddleCenter;
 
-            Vector3 worldPosition = new Vector3(transform.position.x, transform.position.y + textHeight, transform.position.z);
+            float YOffset = (SpriteRend.sprite.rect.height - SpriteRend.sprite.pivot.y) / 100 * transform.localScale.y;
+            Vector3 worldPosition = new Vector3(transform.position.x, transform.position.y + YOffset, transform.position.z);
             Vector3 screenPosition = Camera.main.WorldToScreenPoint(worldPosition);
             screenPosition.y = Screen.height - screenPosition.y;
 
-            GUI.Label(new Rect(screenPosition.x, screenPosition.y, 0, 0), CurrentSpeech, style);
+            GUI.Label(new Rect(screenPosition.x, screenPosition.y - textSize, 0, 0), CurrentSpeech, style);
         }
     }
     public void ShowSelfMessage(int ID)
