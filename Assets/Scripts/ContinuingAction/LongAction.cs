@@ -21,6 +21,13 @@ public class LongAction : MonoBehaviour {
     public float progress, goal;
     public string actionName;
 
+    private SpriteRenderer SpriteRend;
+
+    private void Start()
+    {
+        SpriteRend = gameObject.GetComponent<SpriteRenderer>();
+    }
+
     public void StartContinuingAction(string name, float time, VoidAction action)
     {
         progress = 0f;
@@ -45,8 +52,9 @@ public class LongAction : MonoBehaviour {
 
     public void DrawProgressBar()
     {
+        float YOffset = (SpriteRend.sprite.rect.height - SpriteRend.sprite.pivot.y) / 100 * transform.localScale.y;
         Vector3 worldPosition = new Vector3(transform.position.x, 
-            transform.position.y + (gameObject.GetComponent<SpriteRenderer>().size.y - gameObject.GetComponent<SpriteRenderer>().sprite.pivot.y / 100) * gameObject.transform.localScale.y, 
+            transform.position.y + YOffset, 
             transform.position.z);
         Vector3 screenPosition = Camera.main.WorldToScreenPoint(worldPosition);
         screenPosition.y = Screen.height - screenPosition.y - height * 1.5f + zzz;
@@ -70,14 +78,6 @@ public class LongAction : MonoBehaviour {
             DrawProgressBar();
     }
 
-    private void Start()
-    {
-        Debug.Log(gameObject.GetComponent<SpriteRenderer>().size.y / gameObject.GetComponent<SpriteRenderer>().sprite.pivot.y / 100);
-        Debug.Log(gameObject.GetComponent<SpriteRenderer>().size.y);
-        Debug.Log(gameObject.GetComponent<SpriteRenderer>().sprite.pivot.y);
-        Debug.Log(transform.position.y + gameObject.GetComponent<SpriteRenderer>().size.y / gameObject.GetComponent<SpriteRenderer>().sprite.pivot.y / 100 * gameObject.transform.localScale.y);
-        //SomeClass.instance.Call();
-    }
 }
 
 //public class SomeClass : MonoBehaviour

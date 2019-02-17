@@ -32,15 +32,33 @@ public class Rays : MonoBehaviour {
 
     public LayerMask mask = 11;
 
-	void Start () {
 
+<<<<<<< HEAD
         npc_movement = gameObject.GetComponent<NPC_Movement>();
+=======
+    private NPC_Movement npc_Movement;
+	void Start () {
+        npc_Movement = gameObject.GetComponent<NPC_Movement>();
+        
+>>>>>>> 4a424111b0744c108fb72fdfd8998ca6cedce91f
 
 
     }
 	void Update () {
+        if (!npc_Movement.Waiting)
+        {
+            lightAngle = Vector2.Angle(npc_Movement.points[npc_Movement.currentPoint].transform.position - transform.position, Vector2.right);
+            lightAngle = lightAngle * Mathf.Sign(npc_Movement.points[npc_Movement.currentPoint].transform.position.y - transform.position.y);
+        }
+        Debug.Log("LightAngel = " + lightAngle);
 
+<<<<<<< HEAD
         ChangeSideRewiev();
+=======
+        Debug.DrawRay(Vector2.zero, transform.position, Color.green);
+        Debug.DrawRay(Vector2.zero, npc_Movement.points[npc_Movement.currentPoint].transform.position, Color.green);
+        //ChangeSideRewiev();
+>>>>>>> 4a424111b0744c108fb72fdfd8998ca6cedce91f
         CreateVectors();
 	}
    
@@ -56,14 +74,14 @@ public class Rays : MonoBehaviour {
 		{
 			Vector3 origin = initialLocation - (locationOffset * i);
 			Vector3 direction = new Vector3(Mathf.Cos(Mathf.Deg2Rad * (i * RaySpacing + initialAngle)) * raycastMaxDistance, Mathf.Sin(Mathf.Deg2Rad * (i * RaySpacing + initialAngle)) * raycastMaxDistance);
-			RaycastHit2D hit = Physics2D.Raycast(origin, direction, raycastMaxDistance);
+			RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, raycastMaxDistance);
 			if (hit)
 			{
-				Debug.DrawRay(origin, (direction * hit.distance / raycastMaxDistance),Color.yellow);
+				Debug.DrawRay(transform.position, (direction * hit.distance / raycastMaxDistance),Color.yellow);
 			}
 			else
 			{
-				Debug.DrawRay(origin, direction,Color.red);
+				Debug.DrawRay(transform.position, direction,Color.red);
 			}
 		}
 
