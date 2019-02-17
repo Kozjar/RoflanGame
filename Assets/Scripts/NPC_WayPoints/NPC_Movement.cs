@@ -8,11 +8,7 @@ public class NPC_Movement : MonoBehaviour
 
     // Текущая точка маршрута
     internal int currentPoint;
-<<<<<<< HEAD
-    private bool Waiting = false;
-=======
     public bool Waiting = false;
->>>>>>> 4a424111b0744c108fb72fdfd8998ca6cedce91f
 
 
     public Points points;
