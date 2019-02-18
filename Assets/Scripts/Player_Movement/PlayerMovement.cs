@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour {
     public float speed;
-
+    private Animation anim;
     private InteractionTrigger trigger;
 
 	void Start () {
         trigger = GetComponent<InteractionTrigger>();
+        //animator = GetComponent<Animator>();
+        anim = GetComponent<Animation>();
 	}
 
     private void FixedUpdate()
@@ -16,7 +18,8 @@ public class PlayerMovement : MonoBehaviour {
         if (Input.GetKey(KeyCode.W))
         {
             trigger.lightAngle = 90;
-
+            //anim.Play("Down_0");
+            gameObject.GetComponent<Animation>().Play();
             PlayerState.instance.LookAt(PlayerState.look.up);
             transform.position = Vector2.MoveTowards(transform.position, (Vector2)transform.position + PlayerState.instance.viewDirection, speed * Time.deltaTime);
         }
