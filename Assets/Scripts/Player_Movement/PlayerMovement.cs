@@ -19,7 +19,7 @@ public class PlayerMovement : MonoBehaviour {
         {
             trigger.lightAngle = 90;
             //anim.Play("Down_0");
-            gameObject.GetComponent<Animation>().Play();
+            //gameObject.GetComponent<Animation>().Play();
             PlayerState.instance.LookAt(PlayerState.look.up);
             transform.position = Vector2.MoveTowards(transform.position, (Vector2)transform.position + PlayerState.instance.viewDirection, speed * Time.deltaTime);
         }
