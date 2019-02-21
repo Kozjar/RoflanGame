@@ -28,7 +28,7 @@ public class Rays : MonoBehaviour
     [SerializeField]
     public float lightSourceSize = 0;
 
-
+    private Waypoints_System wp_s;
 
 
     public LayerMask mask = 11;
@@ -51,6 +51,7 @@ public class Rays : MonoBehaviour
         }
         else
         {
+            wp_s = npc_Movement.points[npc_Movement.currentPoint].GetComponent<Waypoints_System>();
             StartCoroutine(LookAround());
         }
         CreateVectors();
@@ -58,13 +59,20 @@ public class Rays : MonoBehaviour
 
     IEnumerator LookAround()
     {
+        if(wp_s.lookLeft>0)
         while (lightAngle <= 180)
         {
             yield return new WaitForSeconds(0);
-            lightAngle += 0.04f;
-            StartCoroutine(Waiting());
+            lightAngle += (wp_s.lookLeft/10f);
+            //StartCoroutine(Waiting());
         }
-        
+        else if (wp_s.lookRight > 0)
+            while (lightAngle <= 0 || lightAngle <= 360)
+            {
+                yield return new WaitForSeconds(0);
+                lightAngle += (wp_s.lookRight / 10f);
+            }
+
 
     }
     IEnumerator Waiting()
