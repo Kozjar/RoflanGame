@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class LoadNewScene : MonoBehaviour {
+public class one: MonoBehaviour
+{
     [TextArea]
     public string PreSceneText;
     public int index;
@@ -50,7 +51,7 @@ public class LoadNewScene : MonoBehaviour {
     {
         SceneINFO_Dialog.PreSceneText = PreSceneText;
         SceneINFO_Dialog.ScenIDLoad = index;
-        SceneManager.LoadScene(3);
+        SceneManager.LoadScene(0);
     }
 
 

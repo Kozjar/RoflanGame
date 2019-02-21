@@ -17,6 +17,7 @@ public class NPC_Movement : MonoBehaviour
     // Скорость и дистанция
     public float Speed = 0.0f;
     private float Distance = 0.0f;
+    private Waypoints_System wp_s;
 
     void Start()
     {
@@ -42,6 +43,7 @@ public class NPC_Movement : MonoBehaviour
 
     void Update()
     {
+        // Если enemy дошёл до последнего поинта то переворачиваем массив и он(enemy) идёт обратно
         if (currentPoint == points.objects.Length)
         {
             for (int i = 0; i < points.objects.Length; i++)
@@ -52,7 +54,7 @@ public class NPC_Movement : MonoBehaviour
             currentPoint = 0;
 
 
-        }
+        }// Аналогично но только вперед
         else if (currentPoint == 0)
         {
             for (int i = 0; i < points.objects.Length; i++)
@@ -70,6 +72,8 @@ public class NPC_Movement : MonoBehaviour
             {
                 if (!Waiting)
                 {
+                    wp_s = points[currentPoint].GetComponent<Waypoints_System>();
+                    // Остановится на заданное кол-во секунд
                     StartCoroutine(stop());
                     Waiting = true;
                 }
@@ -84,7 +88,8 @@ public class NPC_Movement : MonoBehaviour
 
     IEnumerator stop()
     {
-        yield return new WaitForSeconds(4);
+       
+        yield return new WaitForSeconds(wp_s.lookLeft+wp_s.lookRight+wp_s.lookUp+wp_s.lookDown);
         Waiting = false;
         currentPoint++;
     }
@@ -92,6 +97,7 @@ public class NPC_Movement : MonoBehaviour
 
 
 }
+// Чисто шоб за границы массив не выходил
 [System.Serializable]
 public class Points
 {
